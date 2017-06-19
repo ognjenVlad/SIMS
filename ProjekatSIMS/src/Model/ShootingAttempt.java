@@ -1,21 +1,24 @@
 package Model;
 
-public class fieldGoalAttempt {
+public class ShootingAttempt {
 	static public enum PositionEnum { ONE , TWO , TREE , FOUR , FIVE , SIX };
 	static public enum OutcomeEnum { GOOD , MISS };
-	static public enum FgTypeEnum { TWO_POINTS , TREE_POINTS };
+	static public enum FgTypeEnum { ONE_POINT , TWO_POINTS , TREE_POINTS };
 	
 	PositionEnum position;
 	OutcomeEnum outcome;
 	FgTypeEnum type;
+	QuarterEnum quarter;
 	
 	
-	fieldGoalAttempt() {};
+	ShootingAttempt() {};
 	
-	fieldGoalAttempt(FgTypeEnum type, OutcomeEnum outcome , PositionEnum position){
+	ShootingAttempt(FgTypeEnum type, OutcomeEnum outcome
+			,PositionEnum position,QuarterEnum quarter){
 		this.position = position;
 		this.outcome = outcome;
 		this.type = type;
+		this.quarter = quarter;
 	}
 
 	public PositionEnum getPosition() {
@@ -42,19 +45,20 @@ public class fieldGoalAttempt {
 		this.type = type;
 	}
 	
+	public QuarterEnum getQuarter() {
+		return quarter;
+	}
+
+	public void setQuarter(QuarterEnum quarter) {
+		this.quarter = quarter;
+	}
+
 	public boolean isMiss(){
 		if(outcome == OutcomeEnum.MISS){
 			return true;
 		}
 		return false;
 	}
-	
-	public boolean isTwoPoint(){
-		if(type == FgTypeEnum.TWO_POINTS){
-			return true;
-		}
-		return false;
-	}	
-	
+		
 	
 }
