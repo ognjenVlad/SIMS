@@ -10,7 +10,7 @@ public class StatsCounter {
 	
 	StatsCounter(){}
 	
-	public void addTurnover(TypeEnum type,QuarterEnum quarter){
+	public void addStat(TypeEnum type,QuarterEnum quarter){
 		stats.add(new Stat(type,quarter));
 	}
 	public int countStats(TypeEnum type){

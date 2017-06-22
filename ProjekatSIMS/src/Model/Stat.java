@@ -1,8 +1,8 @@
 package Model;
 
 public class Stat {
-	static public enum TypeEnum { TRAVEL , BAD_PASS , THREE_SEC 
-		, BACK_COURT , FOUL , TECHNICAL_FOUL , OFF_REBOUND , DED_REBOUND , ASSIST};
+	static public enum TypeEnum { TRAVEL , BAD_PASS , TREE_SEC 
+		, BACK_COURT , FOUL , TECHNICAL_FOUL , OFF_REBOUND , DEF_REBOUND , ASSIST};
 		
 		TypeEnum type;
 		QuarterEnum quarter;
