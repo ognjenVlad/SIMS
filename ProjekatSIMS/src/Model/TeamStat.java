@@ -1,6 +1,8 @@
 package Model;
 
-public class TeamStat {
+import java.io.Serializable;
+
+public class TeamStat implements Serializable{
 	enum TeamTypeEnum {TIMEOUT , TWOTREE_SECONDS , EIGHT_SECONDS 
 		, FIVE_SECONDS ,  TRAINER_TECHICAL};
 	

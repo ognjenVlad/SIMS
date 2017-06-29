@@ -1,10 +1,11 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import Model.Stat.TypeEnum;
 
-public class StatsCounter {
+public class StatsCounter implements Serializable{
 	ArrayList<Stat> stats = new ArrayList<Stat>();
 	
 	

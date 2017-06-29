@@ -1,12 +1,13 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import Model.ShootingAttempt.FgTypeEnum;
 import Model.ShootingAttempt.OutcomeEnum;
 import Model.ShootingAttempt.PositionEnum;
 
-public class PointsCounter {
+public class PointsCounter implements Serializable {
 	private ArrayList<ShootingAttempt> attempts;
 	
 	PointsCounter(){

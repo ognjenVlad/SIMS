@@ -1,5 +1,6 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 import Model.ShootingAttempt.FgTypeEnum;
@@ -7,7 +8,7 @@ import Model.ShootingAttempt.OutcomeEnum;
 import Model.ShootingAttempt.PositionEnum;
 import Model.Stat.TypeEnum;
 
-public class Player {
+public class Player implements Serializable {
 	HashMap<String,PointsCounter> pCounter = new HashMap<String,PointsCounter>();
 	HashMap<String,StatsCounter> sCounter = new HashMap<String,StatsCounter>();
 	private int dress_num;
