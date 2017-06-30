@@ -2,7 +2,8 @@ package Model;
 
 public class Stat {
 	static public enum TypeEnum { TRAVEL , BAD_PASS , TREE_SEC 
-		, BACK_COURT , FOUL , TECHNICAL_FOUL , OFF_REBOUND , DEF_REBOUND , ASSIST};
+		, BACK_COURT , FOUL , TECHNICAL_FOUL , OFF_REBOUND 
+		, DEF_REBOUND , ASSIST , NONE};
 		
 		TypeEnum type;
 		QuarterEnum quarter;

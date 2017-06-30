@@ -1,6 +1,6 @@
 package Model;
 
 public enum QuarterEnum {
-	FIRST , SECOND , THIRD , FOURTH
+	FIRST , SECOND , THIRD , FOURTH , NONE
 }
 

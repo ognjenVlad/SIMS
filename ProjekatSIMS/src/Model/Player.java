@@ -87,8 +87,9 @@ public class Player implements Serializable {
 		case 1: return QuarterEnum.FIRST;
 		case 2: return QuarterEnum.SECOND;
 		case 3: return QuarterEnum.THIRD;
+		case 4: return QuarterEnum.FOURTH;
 		}
-		return QuarterEnum.FOURTH;
+		return QuarterEnum.NONE;
 	}
 
 
@@ -96,8 +97,9 @@ public class Player implements Serializable {
 		switch(i){
 		case 1: return FgTypeEnum.ONE_POINT;
 		case 2: return FgTypeEnum.TWO_POINTS;
+		case 3: return FgTypeEnum.TREE_POINTS;
 		}
-	return FgTypeEnum.TREE_POINTS;
+	return FgTypeEnum.NONE;
 	}
 	
 	
@@ -108,12 +110,14 @@ public class Player implements Serializable {
 		case 3: return PositionEnum.TREE;
 		case 4: return PositionEnum.FOUR;
 		case 5: return PositionEnum.FIVE;
+		case 6: return PositionEnum.SIX;
 		}
-		return PositionEnum.SIX;
+		return PositionEnum.NONE;
 	}
 
 	
 	private TypeEnum getTypeEnumVal(String str){
+		// Possible enum values for strings
 		if(str.equals("assist"))
 			return TypeEnum.ASSIST;
 		else if(str.equals("off_rebound"))
@@ -130,8 +134,9 @@ public class Player implements Serializable {
 			return TypeEnum.TREE_SEC;
 		else if(str.equals("travel"))
 			return TypeEnum.TRAVEL;
-		else
+		else if(str.equals("bad_pass"))
 			return TypeEnum.BAD_PASS;
+		return TypeEnum.NONE;
 	}
 
 
