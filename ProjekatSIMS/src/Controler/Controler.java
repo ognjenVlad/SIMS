@@ -1,7 +1,9 @@
 package Controler;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
+import Model.Player;
 import Model.Team;
 import Model.Teams;
 import View.View;
@@ -30,15 +32,27 @@ public class Controler {
 	 * Iscitava timove iz fajla uz pomoc metode klase Teams
 	 * @return ArrayList<Team>
 	 */
-	public ArrayList<Team> readTeams(){
+	public ArrayList<Team> readTeamsCont(){
 		
 		teams.readTeams();
 		ArrayList<Team> t = teams.getTeams();
-		for (Team team : t) {
-			System.out.println(team.getName());
-		}
-		
 		return t;
 		
+	}
+	/**
+	 * Dodaje igraca u zadati tim
+	 * @param teamName ima tima u koji se dodaje
+	 * @param p igrac
+	 */
+	public void addPlayerCont(String teamName, Player p){
+		
+		ArrayList<Team> t = teams.getTeams();
+		for (Team team : t) {
+			if(teamName.equals(team.getName())){
+				team.addPlayer(p);
+			}
+		}
+		teams.setTeams(t);
+		teams.refreshFile();//da bi se dodati igraci sacuvali u fajl
 	}
 }

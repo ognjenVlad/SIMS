@@ -31,21 +31,35 @@ public class Teams {
 			os.writeObject(teams);
 			os.close();
 		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	/**
+	 * Upisuje celu listu u fajl ako je doslo do promene(npr. dodavanje igraca)
+	 */
+	public void refreshFile(){
+		try {
+			os = new ObjectOutputStream(new FileOutputStream("./resources/teams.app"));
+			os.writeObject(teams);
+			os.close();
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 	}
 	public void readTeams(){
 		
 		try {
 			is = new ObjectInputStream(new FileInputStream("./resources/teams.app"));
+			
 			teams =  (ArrayList<Team>) is.readObject();
 			is.close();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		

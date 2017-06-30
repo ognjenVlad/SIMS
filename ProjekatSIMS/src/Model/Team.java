@@ -30,6 +30,10 @@ public class Team implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
+	public void addPlayer(Player p){
+		System.out.println(p.getDress_num());
+		team.put(p.getDress_num(), p);
+	}
 	
 	
 }	
