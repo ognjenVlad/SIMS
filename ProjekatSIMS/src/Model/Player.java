@@ -133,5 +133,35 @@ public class Player implements Serializable {
 		else
 			return TypeEnum.BAD_PASS;
 	}
+
+
+	public int getDress_num() {
+		return dress_num;
+	}
+
+
+	public void setDress_num(int dress_num) {
+		this.dress_num = dress_num;
+	}
+
+
+	public String getName() {
+		return name;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+	public String getSurname() {
+		return surname;
+	}
+
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
 	
 }

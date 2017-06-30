@@ -77,7 +77,7 @@ public final class  View extends JFrame implements ActionListener{
 		
 		}else if(src == this.statsTButton){
 			
-			ArrayList<Team> t = controler.readTeams();
+			ArrayList<Team> t = controler.readTeamsCont();
 			
 		
 		}

@@ -1,6 +1,8 @@
 package View;
 
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -9,13 +11,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import Model.Player;
 import Model.Team;
 
 /**
  *  * Dijalog za dodavanje novog igraca
  * @author Ognjen
  */
-public class PlayerWindow extends JDialog {
+public class PlayerWindow extends JDialog implements ActionListener{
 	
 
 	private static final long serialVersionUID = 1L;
@@ -25,8 +28,8 @@ public class PlayerWindow extends JDialog {
 	private JLabel numStr;
 	private JLabel nameStr;
 	private JLabel surStr;
-	private JComboBox<String> teams;//combobox za izbor timova
-	private JButton addTeamButton;
+	private JComboBox<String> teamsCb;//combobox za izbor timova
+	private JButton addPlayerButton;
 	View v; 
 	
 	public PlayerWindow(View v) {
@@ -49,28 +52,35 @@ public class PlayerWindow extends JDialog {
 		
 		JPanel jp = new JPanel(new GridLayout(5, 2));
 		jp.add(numStr);
-		jp.add(playerName);
+		jp.add(playerNum);
 		
 		jp.add(nameStr);
-		jp.add(playerSur);
+		jp.add(playerName);
 		
 		jp.add(surStr);
-		jp.add(playerNum);
+		jp.add(playerSur);
 		createComboBox();
 		
-		jp.add(this.teams);
+		jp.add(this.teamsCb);
 		
-		addTeamButton = new JButton("Add player");
-		jp.add(addTeamButton);
+		addPlayerButton = new JButton("Add player");
+		addPlayerButton.addActionListener(this);
+		jp.add(addPlayerButton);
 		
 		this.add(jp);
 	}
 	
 	void createComboBox(){
-		this.teams = new JComboBox<String>();
-		for(Team t: v.controler.readTeams()){
+		this.teamsCb = new JComboBox<String>();
+		for(Team t: v.controler.readTeamsCont()){
 			System.out.println(t.getName());
-			this.teams.addItem(t.getName());
+			this.teamsCb.addItem(t.getName());
 		}
+	}
+	@Override
+	public void actionPerformed(ActionEvent event){
+		Player p = new Player(Integer.parseInt(this.playerNum.getText()),this.playerName.getText(),this.playerSur.getText());
+		v.controler.addPlayerCont(teamsCb.getSelectedItem().toString(), p);
+		this.dispose();
 	}
 }
