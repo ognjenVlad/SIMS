@@ -3,6 +3,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -36,8 +37,9 @@ public class TeamWindow extends JDialog implements ActionListener {
 		text.add(nameStr);
 		text.add(teamName);
 		
-		JPanel jp = new JPanel(new GridLayout(2, 1));
+		JPanel jp = new JPanel(new GridLayout(3, 1));
 		jp.add(text);
+		jp.add(Box.createHorizontalStrut(30));
 		jp.add(addTeamButton);
 		this.add(jp);
 		this.pack();
@@ -52,7 +54,7 @@ public class TeamWindow extends JDialog implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent event){
 		Team t = new Team(this.teamName.getText());
-		window.controler.addTeam(t);
+		window.getControler().addTeam(t);
 		this.dispose();
 		
 	}
