@@ -28,12 +28,10 @@ public final class  View extends JFrame implements ActionListener{
 	private final JButton addPlayer;
 	private final JButton statsTButton;
 	private final JButton addGame;
-	private final JButton playerInputButton;
 	private TeamWindow tw;
 	private PlayerWindow pw;
 	private GameWindow gw;
 	private Controler controler;
-	private PlayerInputView piw;
 	public View(){
 		super("Basketball statistics");
 		
@@ -41,7 +39,6 @@ public final class  View extends JFrame implements ActionListener{
 		this.addPlayer = new JButton("Add player");
 		this.statsTButton = new JButton("Stats for team");
 		this.addGame = new JButton("Add game");
-		this.playerInputButton = new JButton("Add player's stats");
 		
 		JPanel jp = new JPanel(new GridLayout(4, 1));
 		
@@ -49,13 +46,11 @@ public final class  View extends JFrame implements ActionListener{
 		jp.add(this.addPlayer);
 		jp.add(this.statsTButton);
 		jp.add(this.addGame);
-		jp.add(this.playerInputButton);
 		
 		this.addTeamButton.addActionListener(this);
         this.addPlayer.addActionListener(this);
         this.statsTButton.addActionListener(this);
         this.addGame.addActionListener(this);
-        this.playerInputButton.addActionListener(this);
 			
 		this.add(jp, BorderLayout.SOUTH);
 		this.setSize(800, 600);
@@ -92,14 +87,9 @@ public final class  View extends JFrame implements ActionListener{
 		}else if(src == this.addGame){
 			gw = new GameWindow(this);
 			gw.setVisible(true);
-			
-		
-		}else if(src == this.playerInputButton) {
-			piw = new PlayerInputView(this);
-			piw.setVisible(true);
-		}
-		
+		}		
 	}
+	
 	public void setControler(Controler c){
 		
 		this.controler = c;
