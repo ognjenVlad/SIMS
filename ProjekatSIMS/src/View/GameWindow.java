@@ -11,7 +11,6 @@ import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
 
 import Model.Team;
 
@@ -25,6 +24,8 @@ public class GameWindow extends JDialog implements ActionListener{
 	private View view;
 	private JPanel jp;
 	private JButton addGame;
+	private JButton cancel;
+	private TeamInputView teaminput;
 	
 	GameWindow(View v){
 		super(v,"Add game");
@@ -38,7 +39,8 @@ public class GameWindow extends JDialog implements ActionListener{
 		this.add(jp);
 		this.setSize(300, 200);
 		this.setLocationRelativeTo(v);
-}
+	}
+	
 	
 	
 	public void createComboBox(){
@@ -69,12 +71,24 @@ public class GameWindow extends JDialog implements ActionListener{
 	public void createButtons(){
 		JPanel but_jp = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		this.addGame = new JButton("Add game");
+		this.cancel = new JButton("Cancel");
+		addGame.addActionListener(this);
+		cancel.addActionListener(this);
 		but_jp.add(addGame);
+		but_jp.add(cancel);
 		this.jp.add(but_jp);
+		
 		
 	}
 	@Override
 	public void actionPerformed(ActionEvent event){
-		this.dispose();
+		Object src = event.getSource();
+		if(src == this.addGame){
+			this.setVisible(false);
+			teaminput = new TeamInputView(view);
+			teaminput.setVisible(true);
+		}else if(src == this.cancel){
+			this.dispose();
+		}
 	}
 }

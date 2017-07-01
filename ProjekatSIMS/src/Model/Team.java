@@ -8,7 +8,7 @@ import Model.Stat.TypeEnum;
 import Model.TeamStat.TeamTypeEnum;
 
 public class Team implements Serializable{
-	HashMap<Integer,Player> team = new HashMap<Integer,Player>();
+	HashMap<Integer,Player> players = new HashMap<Integer,Player>();
 	HashMap<String,TeamStatCounter> stats = new HashMap<String,TeamStatCounter>();
 	String name;
 	
@@ -21,7 +21,7 @@ public class Team implements Serializable{
 	public void addGame(String game_id){
 		stats.put(game_id, new TeamStatCounter());
 		
-		for (Entry<Integer, Player> element : team.entrySet()) {
+		for (Entry<Integer, Player> element : players.entrySet()) {
 			element.getValue().addGame(game_id);
 		}
 	}
@@ -69,7 +69,7 @@ public class Team implements Serializable{
 		else if(str.equals("trainer_technical"))
 			return TeamTypeEnum.TRAINER_TECHICAL;
 		else if(str.equals("twotree_seconds"))
-			return TeamTypeEnum.TWOTREE_SECONDS;
+			return TeamTypeEnum.TWOFOUR_SECONDS;
 		return TeamTypeEnum.NONE;
 	}
 
@@ -82,10 +82,10 @@ public class Team implements Serializable{
 	
 	
 	public HashMap<Integer, Player> getTeam() {
-		return team;
+		return players;
 	}
-	public void setTeam(HashMap<Integer, Player> team) {
-		this.team = team;
+	public void setTeam(HashMap<Integer, Player> players) {
+		this.players = players;
 	}
 	public HashMap<String,TeamStatCounter> getStats() {
 		return stats;
@@ -101,7 +101,7 @@ public class Team implements Serializable{
 	}
 	public void addPlayer(Player p){
 		
-		team.put(p.getDress_num(), p);
+		players.put(p.getDress_num(), p);
 	}
 	
 	
