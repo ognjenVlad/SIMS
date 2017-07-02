@@ -28,10 +28,13 @@ public final class  View extends JFrame implements ActionListener{
 	private final JButton addPlayer;
 	private final JButton statsTButton;
 	private final JButton addGame;
+	
 	private TeamWindow tw;
 	private PlayerWindow pw;
 	private GameWindow gw;
+	private TeamOutputView teamView;
 	private Controler controler;
+	
 	public View(){
 		super("Basketball statistics");
 		
@@ -79,11 +82,9 @@ public final class  View extends JFrame implements ActionListener{
 		
 		}else if(src == this.statsTButton){
 			
-			ArrayList<Team> t = controler.readTeamsCont();
-			for (Team team : t){
-				System.out.println(team.getName());
-			}
-		
+			teamView = new TeamOutputView(this);
+			teamView.setVisible(true);
+			
 		}else if(src == this.addGame){
 			gw = new GameWindow(this);
 			gw.setVisible(true);
