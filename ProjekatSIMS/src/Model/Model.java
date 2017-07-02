@@ -7,19 +7,19 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 public class Model {
-	private BasketballModel basket_model;
+	private BasketballModel basketModel;
 	private ObjectOutputStream os;
 	private ObjectInputStream is;
 
 	public Model(){
-		basket_model = new BasketballModel();
+		basketModel = new BasketballModel();
 		readFile();
 	}
 	public void updateFile() {
 
 		try {
 			os = new ObjectOutputStream(new FileOutputStream("./resources/teams.app"));
-			os.writeObject(basket_model);
+			os.writeObject(basketModel);
 			os.close();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -30,7 +30,7 @@ public class Model {
 		
 		try {
 			is = new ObjectInputStream(new FileInputStream("./resources/teams.app"));
-			basket_model =  (BasketballModel) is.readObject();
+			basketModel =  (BasketballModel) is.readObject();
 			is.close();
 		} catch (ClassNotFoundException e) {
 			
@@ -41,12 +41,12 @@ public class Model {
 		}
 	}
 
-	public BasketballModel getBasket_model() {
-		return basket_model;
+	public BasketballModel getBasketModel() {
+		return basketModel;
 	}
 
-	public void setBasket_model(BasketballModel basket_model) {
-		this.basket_model = basket_model;
+	public void setBasketModel(BasketballModel basket_model) {
+		this.basketModel = basket_model;
 	}
 	
 }

@@ -4,7 +4,6 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Date;
 
 import javax.swing.Box;
 import javax.swing.JButton;
@@ -13,8 +12,6 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
-import Model.Team;
 
 public class GameWindow extends JDialog implements ActionListener{
 	
@@ -65,9 +62,9 @@ public class GameWindow extends JDialog implements ActionListener{
 	public void createComboBox(){
 		this.team1Cb = new JComboBox<String>();
 		this.team2Cb = new JComboBox<String>();
-		for(Team t: view.getControler().getModel().getBasket_model().getTeams()){
-			this.team1Cb.addItem(t.getName());
-			this.team2Cb.addItem(t.getName());
+		for(String s: view.getControler().getTeamNames()){
+			this.team1Cb.addItem(s);
+			this.team2Cb.addItem(s);
 		}
 	}
 	public void createLabels(){
@@ -120,9 +117,9 @@ public class GameWindow extends JDialog implements ActionListener{
 		Object src = event.getSource();
 		if(src == this.addGame){
 			this.setVisible(false);
-			teaminput = new TeamInputView(view);
-			view.getControler().addGameCont("1",this.team1Cb.getSelectedItem().toString(),this.team2Cb.getSelectedItem().toString(),this.dateInput.getText(),this.placeInput.getText());
-			teaminput.setVisible(true);
+			this.teaminput = new TeamInputView(view);
+			this.view.getControler().processAddGame("1",this.team1Cb.getSelectedItem().toString(),this.team2Cb.getSelectedItem().toString(),this.dateInput.getText(),this.placeInput.getText());
+			this.teaminput.setVisible(true);
 			
 		}else if(src == this.cancel){
 			this.dispose();

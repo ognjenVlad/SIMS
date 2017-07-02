@@ -12,9 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import Model.Player;
-import Model.Team;
-
 /**
  *  * Dijalog za dodavanje novog igraca
  * @author Ognjen
@@ -76,15 +73,14 @@ public class PlayerWindow extends JDialog implements ActionListener{
 	
 	void createComboBox(){
 		this.teamsCb = new JComboBox<String>();
-		for(Team t: v.getControler().getModel().getBasket_model().getTeams()){
-			System.out.println(t.getName());
-			this.teamsCb.addItem(t.getName());
+		for(String s: v.getControler().getTeamNames()){
+			this.teamsCb.addItem(s);
 		}
 	}
 	@Override
 	public void actionPerformed(ActionEvent event){
-		Player p = new Player(Integer.parseInt(this.playerNum.getText()),this.playerName.getText(),this.playerSur.getText());
-		v.getControler().addPlayerCont(teamsCb.getSelectedItem().toString(), p);
+		
+		v.getControler().processAddPlayer(Integer.parseInt(this.playerNum.getText()),this.playerName.getText(),this.playerSur.getText(),teamsCb.getSelectedItem().toString());
 		this.dispose();
 	}
 }

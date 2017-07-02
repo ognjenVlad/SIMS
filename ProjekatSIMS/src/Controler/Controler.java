@@ -20,16 +20,16 @@ public class Controler {
 	
 	public Controler(View view){
 		this.v = view;
-		model = new Model();
+		this.model = new Model();
 	}
 	/**
 	 * Dodje timove u fajl uz pomoc metode klase BasketballModel
 	 * @return void
 	 */
-	public void addTeam(Team t){
-		
-		model.getBasket_model().addTeam(t);
-		model.updateFile();
+	public void processAddTeam(String name){
+		Team t = new Team(name);
+		this.model.getBasketModel().addTeam(t);
+		this.model.updateFile();
 	}
 	/**
 	 * Iscitava basketballModel iz fajla uz pomoc metode klase Model
@@ -37,7 +37,7 @@ public class Controler {
 	 */
 	public void readModel(){
 		
-		model.readFile();
+		this.model.readFile();
 		
 	}
 	/**
@@ -45,21 +45,27 @@ public class Controler {
 	 * @param teamName ima tima u koji se dodaje
 	 * @param p igrac
 	 */
-	public void addPlayerCont(String teamName, Player p){
+	public void processAddPlayer(int num,String name, String surname, String teamName){
+		Player p = new Player(num, name, surname);
+		this.model.getBasketModel().addPlayer(p, teamName);
+		this.model.updateFile();
+	}
+	public void processAddGame(String game_id,String home,String away,String date,String place){
 		
-		model.getBasket_model().addPlayer(p, teamName);
-		model.updateFile();
+		this.model.getBasketModel().addGame(game_id, home, away, date, place);
+		this.model.updateFile();
 	}
-	public void addGameCont(String game_id,String home,String away,String date,String place){
-		
-		model.getBasket_model().addGame(game_id, home, away, date, place);
-		model.updateFile();
-	}
-	public Model getModel() {
-		return model;
-	}
+
 	public void setModel(Model model) {
 		this.model = model;
+	}
+	public ArrayList<String> getTeamNames(){
+		
+		ArrayList<String> teams = new ArrayList<String>();
+		for(Team t:this.model.getBasketModel().getTeams()){
+			teams.add(t.getName());
+		}
+		return teams;
 	}
 	
 }

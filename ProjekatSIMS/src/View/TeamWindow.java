@@ -10,8 +10,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import Model.Team;
-
 /**
  * Dijalog za dodavanje novog tima
  * @author Ogauzz
@@ -53,8 +51,8 @@ public class TeamWindow extends JDialog implements ActionListener {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent event){
-		Team t = new Team(this.teamName.getText());
-		window.getControler().addTeam(t);
+		
+		this.window.getControler().processAddTeam(this.teamName.getText());
 		this.dispose();
 		
 	}

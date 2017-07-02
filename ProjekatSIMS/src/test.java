@@ -1,8 +1,4 @@
-import java.util.ArrayList;
-
 import Controler.Controler;
-import Model.Player;
-import Model.Team;
 import View.View;
 
 public class test {

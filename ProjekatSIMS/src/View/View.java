@@ -77,8 +77,7 @@ public final class  View extends JFrame implements ActionListener{
 			pw.setVisible(true);
 		
 		}else if(src == this.statsTButton){
-			
-			
+				
 			teamView = new TeamOutputView(this);
 			teamView.setVisible(true);
 			
