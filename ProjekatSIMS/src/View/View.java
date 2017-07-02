@@ -82,19 +82,10 @@ public final class  View extends JFrame implements ActionListener{
 		
 		}else if(src == this.statsTButton){
 			
-			ArrayList<Team> t = controler.getModel().getBasket_model().getTeams();
-			HashMap<String, Game> games = controler.getModel().getBasket_model().getGames();
-			for (Game g : games.values()) {
-				System.out.println(g);
-			}
-			for (Team team : t){
-				System.out.println(team.getName());
-				HashMap<Integer, Player> m = team.getTeam();
-				for (Player p : m.values()) {
-					System.out.println(p.getName());
-				}
-			}
-		
+			
+			teamView = new TeamOutputView(this);
+			teamView.setVisible(true);
+			
 		}else if(src == this.addGame){
 			gw = new GameWindow(this);
 			gw.setVisible(true);
