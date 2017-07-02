@@ -24,7 +24,7 @@ public class PlayerInputView extends JDialog implements ActionListener	{
 		this.setModal(true);
 		this.setLocationRelativeTo(v);
 		this.setTitle("Input for player");
-		this.setSize(600, 600);
+		this.setSize(800, 600);
 		
 		saveButton.addActionListener(this);
 		this.add(tabbedPane);
