@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -13,6 +14,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import Controler.Controler;
+import Model.Game;
+import Model.Player;
 import Model.Team;
 
 /**
@@ -79,9 +82,17 @@ public final class  View extends JFrame implements ActionListener{
 		
 		}else if(src == this.statsTButton){
 			
-			ArrayList<Team> t = controler.readTeamsCont();
+			ArrayList<Team> t = controler.getModel().getBasket_model().getTeams();
+			HashMap<String, Game> games = controler.getModel().getBasket_model().getGames();
+			for (Game g : games.values()) {
+				System.out.println(g);
+			}
 			for (Team team : t){
 				System.out.println(team.getName());
+				HashMap<Integer, Player> m = team.getTeam();
+				for (Player p : m.values()) {
+					System.out.println(p.getName());
+				}
 			}
 		
 		}else if(src == this.addGame){

@@ -1,8 +1,11 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Game {
+public class Game implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	Team homeTeam;
 	Team awayTeam;
 	String game_id;
@@ -19,6 +22,13 @@ public class Game {
 		
 		homeTeam.addGame(game_id);
 		awayTeam.addGame(game_id);
+	}
+
+
+	@Override
+	public String toString() {
+		return "Game [homeTeam=" + homeTeam + ", awayTeam=" + awayTeam + ", game_id=" + game_id + ", date=" + date
+				+ ", place=" + place + "]";
 	}
 	
 	

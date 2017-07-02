@@ -7,7 +7,9 @@ import Model.ShootingAttempt.FgTypeEnum;
 import Model.ShootingAttempt.OutcomeEnum;
 import Model.ShootingAttempt.PositionEnum;
 
-public class PointsCounter implements Serializable {
+public class PointsCounter implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	private ArrayList<ShootingAttempt> attempts;
 	
 	PointsCounter(){

@@ -3,6 +3,10 @@ package Model;
 import java.io.Serializable;
 
 public class TeamStat implements Serializable{
+	private static final long serialVersionUID = 1L;
+
+
+
 	enum TeamTypeEnum {TIMEOUT , TWOFOUR_SECONDS , EIGHT_SECONDS 
 		, FIVE_SECONDS ,  TRAINER_TECHICAL , NONE};
 	

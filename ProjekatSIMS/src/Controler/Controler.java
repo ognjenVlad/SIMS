@@ -1,8 +1,10 @@
 package Controler;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
+import Model.Model;
 import Model.Player;
 import Model.Team;
 import Model.Teams;
@@ -14,29 +16,28 @@ import View.View;
 public class Controler {
 
 	private View v;
-	private Teams teams;
+	private Model model;
 	
 	public Controler(View view){
 		this.v = view;
-		teams = new Teams();
+		model = new Model();
 	}
 	/**
-	 * Dodje timove u fajl uz pomoc metode klase Teams
+	 * Dodje timove u fajl uz pomoc metode klase BasketballModel
 	 * @return void
 	 */
 	public void addTeam(Team t){
 		
-		teams.addTeam(t);
+		model.getBasket_model().addTeam(t);
+		model.updateFile();
 	}
 	/**
-	 * Iscitava timove iz fajla uz pomoc metode klase Teams
-	 * @return ArrayList<Team>
+	 * Iscitava basketballModel iz fajla uz pomoc metode klase Model
+	 * @return void
 	 */
-	public ArrayList<Team> readTeamsCont(){
+	public void readModel(){
 		
-		teams.readTeams();
-		ArrayList<Team> t = teams.getTeams();
-		return t;
+		model.readFile();
 		
 	}
 	/**
@@ -46,13 +47,19 @@ public class Controler {
 	 */
 	public void addPlayerCont(String teamName, Player p){
 		
-		ArrayList<Team> t = teams.getTeams();
-		for (Team team : t) {
-			if(teamName.equals(team.getName())){
-				team.addPlayer(p);
-			}
-		}
-		teams.setTeams(t);
-		teams.refreshFile();//da bi se dodati igraci sacuvali u fajl
+		model.getBasket_model().addPlayer(p, teamName);
+		model.updateFile();
 	}
+	public void addGameCont(String game_id,String home,String away,String date,String place){
+		
+		model.getBasket_model().addGame(game_id, home, away, date, place);
+		model.updateFile();
+	}
+	public Model getModel() {
+		return model;
+	}
+	public void setModel(Model model) {
+		this.model = model;
+	}
+	
 }

@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import Model.Stat.TypeEnum;
 
 public class StatsCounter implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	ArrayList<Stat> stats = new ArrayList<Stat>();
 	
 	

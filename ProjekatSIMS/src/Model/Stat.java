@@ -1,6 +1,10 @@
 package Model;
 
-public class Stat {
+import java.io.Serializable;
+
+public class Stat implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 	static public enum TypeEnum { TRAVEL , BAD_PASS , TREE_SEC 
 		, BACK_COURT , FOUL , TECHNICAL_FOUL , OFF_REBOUND 
 		, DEF_REBOUND , ASSIST , NONE};

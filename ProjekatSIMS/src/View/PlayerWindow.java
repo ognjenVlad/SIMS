@@ -76,7 +76,7 @@ public class PlayerWindow extends JDialog implements ActionListener{
 	
 	void createComboBox(){
 		this.teamsCb = new JComboBox<String>();
-		for(Team t: v.getControler().readTeamsCont()){
+		for(Team t: v.getControler().getModel().getBasket_model().getTeams()){
 			System.out.println(t.getName());
 			this.teamsCb.addItem(t.getName());
 		}

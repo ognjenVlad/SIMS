@@ -1,13 +1,11 @@
 package Model;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  *  Klasa sadrzi metode za citanje iz fajla i dodavanje timova u fajl
@@ -37,17 +35,7 @@ public class Teams {
 	/**
 	 * Upisuje celu listu u fajl ako je doslo do promene(npr. dodavanje igraca)
 	 */
-	public void refreshFile(){
-		try {
-			os = new ObjectOutputStream(new FileOutputStream("./resources/teams.app"));
-			os.writeObject(teams);
-			os.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
+	
 	public void readTeams(){
 		
 		try {

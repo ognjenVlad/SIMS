@@ -1,13 +1,13 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-import Model.ShootingAttempt.FgTypeEnum;
-import Model.ShootingAttempt.OutcomeEnum;
-import Model.ShootingAttempt.PositionEnum;
 import Model.TeamStat.TeamTypeEnum;
 
-public class TeamStatCounter {
+public class TeamStatCounter implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	ArrayList<TeamStat> stats;
 
 	TeamStatCounter() {

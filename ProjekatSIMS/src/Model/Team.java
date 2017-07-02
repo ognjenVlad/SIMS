@@ -72,14 +72,6 @@ public class Team implements Serializable{
 			return TeamTypeEnum.TWOFOUR_SECONDS;
 		return TeamTypeEnum.NONE;
 	}
-
-	
-	
-	
-	
-	
-	
-	
 	
 	public HashMap<Integer, Player> getTeam() {
 		return players;
@@ -102,6 +94,12 @@ public class Team implements Serializable{
 	public void addPlayer(Player p){
 		
 		players.put(p.getDress_num(), p);
+	}
+
+
+	@Override
+	public String toString() {
+		return "Team [name=" + name + "]";
 	}
 	
 	

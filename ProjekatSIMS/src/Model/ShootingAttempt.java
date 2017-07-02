@@ -1,6 +1,11 @@
 package Model;
 
-public class ShootingAttempt {
+import java.io.Serializable;
+
+public class ShootingAttempt implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+
 	static public enum PositionEnum { ONE , TWO , TREE , FOUR , FIVE , SIX , NONE };
 	static public enum OutcomeEnum { GOOD , MISS , NONE};
 	static public enum FgTypeEnum { ONE_POINT , TWO_POINTS , TREE_POINTS ,NONE};
