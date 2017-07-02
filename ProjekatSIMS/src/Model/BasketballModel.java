@@ -11,7 +11,7 @@ public class BasketballModel implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private HashMap<String,Game> games = new HashMap<String,Game>();
-	private ArrayList<Team> teams = new ArrayList<Team>();
+	private HashMap<String,Team> teams = new HashMap<String,Team>();
 	private ArrayList<Player> players = new ArrayList<Player>();
 	
 	
@@ -30,24 +30,16 @@ public class BasketballModel implements Serializable {
 	
 	public void addPlayer(Player p, String teamName){
 		players.add(p);
-		for (Team team : this.getTeams() ) {
-			if(teamName.equals(team.getName())){
-				team.addPlayer(p);
-			}
-		}
+		teams.get(teamName).addPlayer(p);
 	}
 	
 	public void addTeam(Team t){
-		teams.add(t);
+		teams.put(t.getName(),t);
 	}
 	public Team findTeam(String team){
-		for (Team t : teams) {
-			if(t.getName().equals(team)){
-				return t;
-			}
-		}
-		return null;
+		return teams.get(team);
 	}
+	
 	public HashMap<String, Game> getGames() {
 		return games;
 	}
@@ -56,11 +48,11 @@ public class BasketballModel implements Serializable {
 		this.games = games;
 	}
 
-	public ArrayList<Team> getTeams() {
+	public HashMap<String,Team> getTeams() {
 		return teams;
 	}
 
-	public void setTeams(ArrayList<Team> teams) {
+	public void setTeams(HashMap<String,Team> teams) {
 		this.teams = teams;
 	}
 
@@ -70,6 +62,35 @@ public class BasketballModel implements Serializable {
 
 	public void setPlayer(ArrayList<Player> player) {
 		this.players = player;
+	}
+	
+	public void addPoints(String game_id ,String team_name,int jersey,int shot_for,int total 
+			, int good , int pos , int quart){
+		games.get(game_id).getTeam(team_name).getPlayer(jersey)
+		.addShots(game_id, shot_for, total, good, pos, quart);
+	}
+	
+	public void addStat(String game_id ,String team_name,int jersey
+			,String add_what,int amount,int quart){
+		games.get(game_id).getTeam(team_name).getPlayer(jersey)
+		.addStats(game_id, add_what, amount, quart);
+		
+	}
+	
+	public ArrayList<String> getPlayersSorter(String team){
+		ArrayList<Integer> players = teams.get(team).getPlayersSorted();
+		ArrayList<String> ret_value = new ArrayList<String>();
+		String name , surname ;
+		int jersey;
+
+		for (Integer integer : players) {
+			surname = teams.get(team).getPlayer(integer).getSurname();
+			name = teams.get(team).getPlayer(integer).getName();
+			jersey = teams.get(team).getPlayer(integer).getDress_num();
+			ret_value.add(jersey+", "+name + " " + surname);
+		}
+		
+		return ret_value;
 	}
 	
 	

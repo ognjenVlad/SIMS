@@ -34,6 +34,8 @@ public final class  View extends JFrame implements ActionListener{
 	public View(){
 		super("Basketball statistics");
 		
+		
+		
 		this.addTeamButton = new JButton("Add team");
 		this.addPlayer = new JButton("Add player");
 		this.statsTButton = new JButton("Stats for team");

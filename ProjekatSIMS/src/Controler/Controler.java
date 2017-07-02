@@ -62,10 +62,26 @@ public class Controler {
 	public ArrayList<String> getTeamNames(){
 		
 		ArrayList<String> teams = new ArrayList<String>();
-		for(Team t:this.model.getBasketModel().getTeams()){
+		for(Team t:this.model.getBasketModel().getTeams().values()){
 			teams.add(t.getName());
 		}
 		return teams;
 	}
+	
+	public ArrayList<String> getPlayersSorter(String team){
+		return model.getPlayersSorter(team);
+	}
+	
+	public void processAddPoints(String game_id ,String team_name,int jersey,int shot_for,int total 
+			, int good , int pos , int quart){
+		model.addPoints(game_id, team_name, jersey, shot_for, total, good, pos, quart);;
+	}
+	
+	public void processAddStat(String game_id ,String team_name,int jersey
+			,String add_what,int amount,int quart){
+		model.addStat(game_id, team_name, jersey, add_what, amount, quart);
+	}
+
+
 	
 }

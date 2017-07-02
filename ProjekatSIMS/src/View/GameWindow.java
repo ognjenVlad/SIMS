@@ -115,11 +115,16 @@ public class GameWindow extends JDialog implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent event){
 		Object src = event.getSource();
+		String team1 = this.team1Cb.getSelectedItem().toString();
+		String team2 = this.team2Cb.getSelectedItem().toString();
+		String game_id = idInput.getText();
 		if(src == this.addGame){
 			this.setVisible(false);
-			this.teaminput = new TeamInputView(view);
-			this.view.getControler().processAddGame("1",this.team1Cb.getSelectedItem().toString(),this.team2Cb.getSelectedItem().toString(),this.dateInput.getText(),this.placeInput.getText());
+			this.view.getControler().processAddGame("1",team1,team2
+					,this.dateInput.getText(),this.placeInput.getText());
+			this.teaminput = new TeamInputView(view,game_id,team1,team2);
 			this.teaminput.setVisible(true);
+			this.dispose();
 			
 		}else if(src == this.cancel){
 			this.dispose();

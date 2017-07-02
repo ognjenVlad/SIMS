@@ -1,10 +1,11 @@
 package Model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
-import Model.Stat.TypeEnum;
 import Model.TeamStat.TeamTypeEnum;
 
 public class Team implements Serializable{
@@ -16,7 +17,6 @@ public class Team implements Serializable{
 		super();
 		this.name = name;
 	}
-	
 	
 	public void addGame(String game_id){
 		stats.put(game_id, new TeamStatCounter());
@@ -94,6 +94,16 @@ public class Team implements Serializable{
 	public void addPlayer(Player p){
 		
 		players.put(p.getDress_num(), p);
+	}
+	
+	public Player getPlayer(int jersey){
+		return players.get(jersey);
+	}
+	
+	public ArrayList<Integer> getPlayersSorted(){
+		ArrayList<Integer> sorted_players =  new ArrayList(players.keySet());
+		Collections.sort(sorted_players);
+		return sorted_players;
 	}
 
 

@@ -31,6 +31,16 @@ public class Game implements Serializable {
 				+ ", place=" + place + "]";
 	}
 	
+	public Team getTeam(String team_name){
+		if(team_name.equals(homeTeam.getName())){
+			return homeTeam;
+		}else if(team_name.equals(awayTeam.getName())){
+			return awayTeam;
+		}
+		
+		return null;
+	}
+	
 	
 	
 }

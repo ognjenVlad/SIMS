@@ -11,13 +11,21 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 public class TeamInputView extends JDialog implements ActionListener{
-	View v;
+	View view;
 	JTabbedPane tabbedPane;
 	JButton saveButton;
 	
+	String game_id;
+	String team1;
+	String team2;
 	
-	TeamInputView(View v){
-		this.v = v;
+	
+	TeamInputView(View v,String game_id,String team1,String team2){
+		this.game_id = game_id;
+		this.team1 = team1;
+		this.team2 = team2;
+		
+		this.view = v;
 		
 		this.tabbedPane = new JTabbedPane();
 		this.saveButton = new JButton("Save");
@@ -35,8 +43,8 @@ public class TeamInputView extends JDialog implements ActionListener{
 		this.add(this.tabbedPane);
 		this.add(saveButton,BorderLayout.SOUTH);
 		
-		this.tabbedPane.add(new TeamInputTab(v),"Home");
-		this.tabbedPane.add(new TeamInputTab(v),"Away");
+		this.tabbedPane.add(new TeamInputTab(view,game_id,team1),team1);
+		this.tabbedPane.add(new TeamInputTab(view,game_id,team2),team2);
 
 		this.tabbedPane.setVisible(true);
 }
@@ -44,7 +52,7 @@ public class TeamInputView extends JDialog implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+		dispose();
 	}
 
 }

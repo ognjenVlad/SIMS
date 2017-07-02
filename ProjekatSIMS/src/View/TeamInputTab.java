@@ -16,15 +16,23 @@ public class TeamInputTab extends JPanel implements ActionListener{
 	View view;
 	JButton saveButton;
 	
+	String game_id;
+	String team;
+	
 	JPanel jp;
 	
-	TeamInputTab(View v){
+	TeamInputTab(View v,String game_id,String team){
+		this.game_id = game_id;
+		this.team = team;
+		
 		this.view = v;
+
 		pInputViews = new ArrayList<PlayerInputView>();
 		playerButtons = new ArrayList<JButton>();
 		labels = new ArrayList<JLabel>();
 		saveButton = new JButton("Save");
 		jp = new JPanel(new GridLayout(13,2));
+
 		this.setSize(500,500);
 	
 		init();
@@ -32,13 +40,20 @@ public class TeamInputTab extends JPanel implements ActionListener{
 	}
 	
 	private void init() {
+		ArrayList<String> players = view.getControler().getPlayersSorter(team);
+		
 		for(int i =0 ; i < 12 ; i++) {
 			playerButtons.add(new JButton("+"));
 			playerButtons.get(i).addActionListener(this);
-			labels.add(new JLabel("Player " + (i+1)));
-			pInputViews.add(new PlayerInputView(view));
+			pInputViews.add(new PlayerInputView(view,game_id,team,players.get(i).split(",")[0]));
 		}
 		
+		for(int i = 0 ; i < players.size(); i++){
+			labels.add(new JLabel(players.get(i)));
+		}
+		for(int i = players.size(); i < 12 ;i++){
+			labels.add(new JLabel("Player"));			
+		}
 		
 		this.add(jp);
 		
