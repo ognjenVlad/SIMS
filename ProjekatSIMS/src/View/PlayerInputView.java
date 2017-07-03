@@ -3,10 +3,10 @@ package View;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 public class PlayerInputView extends JDialog implements ActionListener	{
@@ -17,6 +17,7 @@ public class PlayerInputView extends JDialog implements ActionListener	{
 	String game_id;
 	String team;
 	String jersey;
+	ArrayList<QuarterInputView> quarters = new ArrayList<QuarterInputView>();
 	
 	PlayerInputView(View v,String game_id,String team,String jersey){
 		this.view = v;
@@ -31,15 +32,21 @@ public class PlayerInputView extends JDialog implements ActionListener	{
 		this.setLocationRelativeTo(view);
 		this.setTitle("Input for player");
 		this.setSize(800, 600);
-		
 		saveButton.addActionListener(this);
 		this.add(tabbedPane);
-		tabbedPane.add("Quarter1", new QuarterInputView(view,game_id,team,jersey,1));
-		tabbedPane.add("Quarter2", new QuarterInputView(view,game_id,team,jersey,2));
-		tabbedPane.add("Quarter3", new QuarterInputView(view,game_id,team,jersey,3));
-		tabbedPane.add("Quarter4", new QuarterInputView(view,game_id,team,jersey,4));
+		for(int i = 0 ; i < 4 ; i++){
+			quarters.add(new QuarterInputView(view,game_id,team,jersey,i));
+			tabbedPane.add("Quarter "+ (i+1) , quarters.get(i));
+		}
 		this.add(saveButton,BorderLayout.SOUTH);
 
+	}
+	
+	public void showPIW(){
+		this.setVisible(true);
+		for(int i = 0 ; i < 4; i++){
+			quarters.get(i).reset();
+		}
 	}
 	
 	

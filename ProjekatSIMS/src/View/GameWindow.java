@@ -120,7 +120,7 @@ public class GameWindow extends JDialog implements ActionListener{
 		String game_id = idInput.getText();
 		if(src == this.addGame){
 			this.setVisible(false);
-			this.view.getControler().processAddGame("1",team1,team2
+			this.view.getControler().processAddGame(game_id,team1,team2
 					,this.dateInput.getText(),this.placeInput.getText());
 			this.teaminput = new TeamInputView(view,game_id,team1,team2);
 			this.teaminput.setVisible(true);

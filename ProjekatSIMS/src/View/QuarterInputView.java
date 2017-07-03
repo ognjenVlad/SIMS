@@ -33,6 +33,14 @@ public class QuarterInputView extends JPanel implements ActionListener {
 		labels = new ArrayList<JLabel>();
 
 		init();
+		reset();
+	}
+	
+	public void reset(){
+		for(int i = 0 ; i < textFields.size(); i++){
+			textFields.get(i).setText("0");
+		}
+		this.repaint();
 	}
 
 	private void init() {

@@ -30,7 +30,6 @@ public class TeamInputTab extends JPanel implements ActionListener{
 		pInputViews = new ArrayList<PlayerInputView>();
 		playerButtons = new ArrayList<JButton>();
 		labels = new ArrayList<JLabel>();
-		saveButton = new JButton("Save");
 		jp = new JPanel(new GridLayout(13,2));
 
 		this.setSize(500,500);
@@ -62,9 +61,7 @@ public class TeamInputTab extends JPanel implements ActionListener{
 			jp.add(playerButtons.get(i));
 		}
 		
-		saveButton.setText("Save");
 		
-		jp.add(saveButton);
 		
 		this.setVisible(true);
 
@@ -75,29 +72,29 @@ public class TeamInputTab extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		if(src == this.playerButtons.get(0)){
-			pInputViews.get(0).setVisible(true);
+			pInputViews.get(0).showPIW();
 		}else if(src == this.playerButtons.get(1)){
-			pInputViews.get(1).setVisible(true);
+			pInputViews.get(1).showPIW();
 		}else if(src == this.playerButtons.get(2)){
-			pInputViews.get(2).setVisible(true);
+			pInputViews.get(2).showPIW();
 		}else if(src == this.playerButtons.get(3)){
-			pInputViews.get(3).setVisible(true);
+			pInputViews.get(3).showPIW();
 		}else if(src == this.playerButtons.get(4)) {
-			pInputViews.get(4).setVisible(true);
+			pInputViews.get(4).showPIW();
 		}else if(src == this.playerButtons.get(5)) {
-			pInputViews.get(5).setVisible(true);
+			pInputViews.get(5).showPIW();
 		}else if(src == this.playerButtons.get(6)) {
-			pInputViews.get(6).setVisible(true);
+			pInputViews.get(6).showPIW();
 		}else if(src == this.playerButtons.get(7)) {
-			pInputViews.get(7).setVisible(true);
+			pInputViews.get(7).showPIW();
 		}else if(src == this.playerButtons.get(8)) {
-			pInputViews.get(8).setVisible(true);
+			pInputViews.get(8).showPIW();
 		}else if(src == this.playerButtons.get(9)) {
-			pInputViews.get(9).setVisible(true);
+			pInputViews.get(9).showPIW();
 		}else if(src == this.playerButtons.get(10)) {
-			pInputViews.get(10).setVisible(true);
+			pInputViews.get(10).showPIW();
 		}else if(src == this.playerButtons.get(11)) {
-			pInputViews.get(11).setVisible(true);
+			pInputViews.get(11).showPIW();
 		}
 		
 	}

@@ -15,7 +15,7 @@ import javax.swing.table.TableColumnModel;
 public class TeamOutputTab extends JPanel implements ActionListener{
 	
 	JTable teamTable;
-	JTable fieldsTable;
+	SquaresTable fieldsTable;
 	
 	
 	TeamOutputTab(){
@@ -26,6 +26,7 @@ public class TeamOutputTab extends JPanel implements ActionListener{
 	private void init() {
 		teamTableInit();
 		fieldsTableInit();
+		fieldsTable = new SquaresTable();
 		
 		this.add(teamTable);
 		this.add(fieldsTable);
@@ -64,33 +65,6 @@ public class TeamOutputTab extends JPanel implements ActionListener{
 	}
 	
 	private void fieldsTableInit() {
-		fieldsTable = new JTable(2,3) {
-			 public boolean isCellEditable(int data, int columns)
-             {
-                 return false;
-             }
-		};
-		
-		fieldsTable.setRowHeight(0,80);
-		fieldsTable.setRowHeight(1,80);
-		fieldsTable.setFont(new Font("Serif", Font.BOLD, 20));
-		fieldsTable.setBackground(Color.LIGHT_GRAY);
-
-		
-		TableColumnModel tcm = fieldsTable.getColumnModel();
-		tcm.getColumn(0).setPreferredWidth(80);
-		tcm.getColumn(1).setPreferredWidth(80);
-		tcm.getColumn(2).setPreferredWidth(80);
-
-		DefaultTableModel model = (DefaultTableModel) fieldsTable.getModel();
-		
-		
-		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-		centerRenderer.setHorizontalAlignment(DefaultTableCellRenderer.CENTER );
-		centerRenderer.setVerticalAlignment(DefaultTableCellRenderer.CENTER);
-		tcm.getColumn(0).setCellRenderer(centerRenderer);
-		tcm.getColumn(1).setCellRenderer(centerRenderer);
-		tcm.getColumn(2).setCellRenderer(centerRenderer);
 
 //		model.setValueAt("<html> <center> 10/20 <br/> 50% </center> </html>", 1, 1);
 	
