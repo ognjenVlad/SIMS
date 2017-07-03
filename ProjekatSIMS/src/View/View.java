@@ -26,11 +26,16 @@ public final class  View extends JFrame implements ActionListener{
 	private final JButton addPlayer;
 	private final JButton statsTButton;
 	private final JButton addGame;
+	private final JButton statsPlayerButton;
+	private final JButton statsGameButton;
 	private TeamWindow tw;
 	private PlayerWindow pw;
 	private GameWindow gw;
 	private Controler controler;
 	private TeamOutputView teamView;
+	private PlayerOutputView playerView;
+	private GameOutputView gameView;
+	
 	public View(){
 		super("Basketball statistics");
 		
@@ -40,19 +45,24 @@ public final class  View extends JFrame implements ActionListener{
 		this.addPlayer = new JButton("Add player");
 		this.statsTButton = new JButton("Stats for team");
 		this.addGame = new JButton("Add game");
+		this.statsPlayerButton = new JButton("Stats for player");
+		this.statsGameButton = new JButton("Stats for game");
 		
-		JPanel jp = new JPanel(new GridLayout(4, 1));
+		JPanel jp = new JPanel(new GridLayout(6, 1));
 		
 		jp.add(this.addTeamButton); 
 		jp.add(this.addPlayer);
 		jp.add(this.statsTButton);
 		jp.add(this.addGame);
-		
+		jp.add(this.statsPlayerButton);
+		jp.add(this.statsGameButton);
 		this.addTeamButton.addActionListener(this);
         this.addPlayer.addActionListener(this);
         this.statsTButton.addActionListener(this);
         this.addGame.addActionListener(this);
-			
+        this.statsPlayerButton.addActionListener(this);
+        this.statsGameButton.addActionListener(this);
+        
 		this.add(jp, BorderLayout.SOUTH);
 		this.setSize(800, 600);
 		ImageIcon img = new ImageIcon("./resources/fibahands.jpeg");
@@ -86,6 +96,12 @@ public final class  View extends JFrame implements ActionListener{
 		}else if(src == this.addGame){
 			gw = new GameWindow(this);
 			gw.setVisible(true);
+		}else if(src == this.statsPlayerButton){
+			playerView = new PlayerOutputView(this,"Real Madrid",4);
+			playerView.setVisible(true);;
+		}else if(src == this.statsGameButton){
+			gameView = new GameOutputView(this);
+			gameView.setVisible(true);
 		}		
 	}
 	
