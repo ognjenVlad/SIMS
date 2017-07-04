@@ -93,5 +93,16 @@ public class BasketballModel implements Serializable {
 		return ret_value;
 	}
 	
+	public void addTStat(String game_id,String team_name,String add_what,int amount,int quart) {
+		teams.get(team_name).addStat(game_id,add_what,amount,quart);
+	}
+
+	public double countAvgShots(String team,int jersey,int shot_for,boolean isGood,int pos,int quart) {
+		return  teams.get(team).countAvgShots(jersey,shot_for, isGood, pos,quart);
+	}
+	
+	public double countAvgStat(String team,int jersey,String count_what,int quart) {
+		return teams.get(team).countAvgStat(jersey,count_what, quart);
+	}
 	
 }

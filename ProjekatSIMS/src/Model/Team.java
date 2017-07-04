@@ -46,6 +46,14 @@ public class Team implements Serializable{
 		return stats.get(game_id).countStats(type);
 	}
 	
+	public double countAvgShots(int jersey,int shot_for,boolean isGood,int pos,int quart) {
+		return players.get(jersey).countAvgShots(shot_for, isGood, pos,quart);
+	}
+	
+	public double countAvgStat(int jersey,String count_what,int quart) {
+		return players.get(jersey).countAvgStat(count_what, quart);
+	}
+	
 	
 	private QuarterEnum getQuarterEnumVal(int i){
 		switch(i){

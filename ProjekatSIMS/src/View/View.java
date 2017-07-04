@@ -90,7 +90,7 @@ public final class  View extends JFrame implements ActionListener{
 		
 		}else if(src == this.statsTButton){
 				
-			teamView = new TeamOutputView(this);
+			teamView = new TeamOutputView(this,"Real Madrid");
 			teamView.setVisible(true);
 			
 		}else if(src == this.addGame){
@@ -100,7 +100,7 @@ public final class  View extends JFrame implements ActionListener{
 			playerView = new PlayerOutputView(this,"Real Madrid",4);
 			playerView.setVisible(true);;
 		}else if(src == this.statsGameButton){
-			gameView = new GameOutputView(this);
+			gameView = new GameOutputView(this,"Real Madrid","Read Madrid");
 			gameView.setVisible(true);
 		}		
 	}

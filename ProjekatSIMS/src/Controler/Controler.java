@@ -81,7 +81,17 @@ public class Controler {
 			,String add_what,int amount,int quart){
 		model.addStat(game_id, team_name, jersey, add_what, amount, quart);
 	}
-
-
 	
+	public void processAddTStat(String game_id,String team_name,String add_what,int amount,int quart) {
+		model.addTStat(game_id,team_name,add_what,amount,quart);
+	}
+
+
+	public double countAvgShots(String team,int jersey,int shot_for,boolean isGood,int pos,int quart) {
+		return  model.countAvgShots(team,jersey,shot_for, isGood, pos,quart);
+	}
+	
+	public double countAvgStat(String team,int jersey,String count_what,int quart) {
+		return model.countAvgStat(team,jersey,count_what, quart);
+	}
 }

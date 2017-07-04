@@ -32,7 +32,7 @@ public class Player implements Serializable {
 	
 	
 	public void addShots(String game_id,int shot_for,int total 
-			, int good , int pos , int quart){		
+			, int good , int pos , int quart){
 		QuarterEnum quarter = getQuarterEnumVal(quart);
 		PositionEnum position = getPositionEnumVal(pos);
 		FgTypeEnum type = getFgTypeEnumVal(shot_for);
@@ -49,7 +49,9 @@ public class Player implements Serializable {
 
 	public int countShots(String game_id,int shot_for,boolean isGood 
 			, int pos , int quart){
-
+		if(quart == 0) {
+			return this.countShots(game_id, shot_for, isGood, pos);
+		}
 		QuarterEnum quarter = getQuarterEnumVal(quart);
 		PositionEnum position = getPositionEnumVal(pos);
 		FgTypeEnum type = getFgTypeEnumVal(shot_for);
@@ -64,7 +66,51 @@ public class Player implements Serializable {
 		return counter;
 	}
 	
+	public int countShots(String game_id,int shot_for,boolean isGood 
+			, int pos){
+
+		PositionEnum position = getPositionEnumVal(pos);
+		FgTypeEnum type = getFgTypeEnumVal(shot_for);
+		OutcomeEnum outcome;
+		
+		if(isGood)
+			outcome = OutcomeEnum.GOOD;
+		else
+			outcome = OutcomeEnum.MISS;
+			
+		int counter = pCounter.get(game_id).countShotsMade(type, position, outcome);
+		return counter;
+	}
+	
+	public double countAvgShots(int shot_for,boolean isGood,int pos,int quart) {
+		if(quart == 0) {
+			return this.countAvgShots(shot_for, isGood, pos);
+		}
+		double counter=0;		
+		
+		for (String game_id : pCounter.keySet()) {
+			counter += this.countShots(game_id, shot_for, isGood, pos,quart);
+		}
+		
+		counter /= pCounter.size();
+		
+		return counter;
+	}
+	
+	public double countAvgShots(int shot_for,boolean isGood,int pos) {
+		double counter=0;
+		
+		for (String game_id : pCounter.keySet()) {
+			counter += this.countShots(game_id, shot_for, isGood, pos);
+		}
+		
+		counter /= pCounter.size();
+		
+		return counter;
+	}
+	
 	public void addStats(String game_id,String add_what,int amount,int quart){
+		
 		QuarterEnum quarter = getQuarterEnumVal(quart);
 		TypeEnum type = getTypeEnumVal(add_what);
 		
@@ -76,10 +122,40 @@ public class Player implements Serializable {
 	}
 	
 	public int countStat(String game_id,String count_what,int quart){
+		if(quart == 0) {
+			return this.countStat(game_id, count_what);
+		}
 		QuarterEnum quarter = getQuarterEnumVal(quart);
 		TypeEnum type = getTypeEnumVal(count_what);
 		int count = sCounter.get(game_id).countStats(type,quarter);
 		return count;
+	}
+	
+	public int countStat(String game_id,String count_what){
+		TypeEnum type = getTypeEnumVal(count_what);
+		int count = sCounter.get(game_id).countStats(type);
+		return count;
+	}
+	
+	public double countAvgStat(String count_what,int quart){
+		double counter=0;
+		for (String game_id : pCounter.keySet()) {
+			counter += this.countStat(game_id, count_what, quart);
+		}
+		
+		counter /= pCounter.size();
+		return counter;
+	}
+	
+	public double countAvgStat(String count_what){
+		double counter=0;
+		TypeEnum type = getTypeEnumVal(count_what);
+		for (String game_id : pCounter.keySet()) {
+			counter += sCounter.get(game_id).countStats(type);
+		}
+		
+		counter /= pCounter.size();
+		return counter;
 	}
 	
 	private QuarterEnum getQuarterEnumVal(int i){

@@ -1,5 +1,6 @@
 package View;
 
+import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,12 +15,14 @@ public class TeamInputTab extends JPanel implements ActionListener{
 	ArrayList<JLabel> labels;
 	ArrayList<PlayerInputView> pInputViews;
 	View view;
-	JButton saveButton;
+	JButton teamStatsButton;
+	
 	
 	String game_id;
 	String team;
 	
 	JPanel jp;
+	TStatInputView tstatView;
 	
 	TeamInputTab(View v,String game_id,String team){
 		this.game_id = game_id;
@@ -28,13 +31,18 @@ public class TeamInputTab extends JPanel implements ActionListener{
 		this.view = v;
 
 		pInputViews = new ArrayList<PlayerInputView>();
+		tstatView = new TStatInputView(view,game_id,team);
 		playerButtons = new ArrayList<JButton>();
 		labels = new ArrayList<JLabel>();
+		teamStatsButton = new JButton("Add team stats");
 		jp = new JPanel(new GridLayout(13,2));
 
 		this.setSize(500,500);
 	
 		init();
+		
+		teamStatsButton.addActionListener(this);
+		this.add(teamStatsButton);
 
 	}
 	
@@ -95,6 +103,8 @@ public class TeamInputTab extends JPanel implements ActionListener{
 			pInputViews.get(10).showPIW();
 		}else if(src == this.playerButtons.get(11)) {
 			pInputViews.get(11).showPIW();
+		}else if(src == this.teamStatsButton) {
+			tstatView.showTSW();
 		}
 		
 	}

@@ -53,7 +53,9 @@ public class PlayerInputView extends JDialog implements ActionListener	{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		for(int i = 0 ; i < quarters.size(); i++) {
+			quarters.get(0).saveData();
+		}
 		
 	}
 

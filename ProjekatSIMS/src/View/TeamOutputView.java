@@ -14,9 +14,11 @@ public class TeamOutputView extends JDialog implements ActionListener{
 	JButton backButton;
 	
 	View view;
+	String team;
 	
-	TeamOutputView(View v){
+	TeamOutputView(View v,String team){
 		view = v;
+		this.team = team;
 		
 		tabbedPaneInit();
 		
@@ -34,9 +36,11 @@ public class TeamOutputView extends JDialog implements ActionListener{
 	private void tabbedPaneInit() {
 		tabbedPane = new JTabbedPane();
 		
-		tabbedPane.add("Total", new TeamOutputTab());
-		tabbedPane.add("Home", new TeamOutputTab());
-		tabbedPane.add("Away", new TeamOutputTab());		
+		tabbedPane.add("Total", new TeamOutputTab(view,team,0));
+		tabbedPane.add("Quarter1", new TeamOutputTab(view,team,1));
+		tabbedPane.add("Quarter2", new TeamOutputTab(view,team,2));		
+		tabbedPane.add("Quarter3", new TeamOutputTab(view,team,3));		
+		tabbedPane.add("Quarter4", new TeamOutputTab(view,team,4));		
 		tabbedPane.setVisible(true);
 	}
 	
