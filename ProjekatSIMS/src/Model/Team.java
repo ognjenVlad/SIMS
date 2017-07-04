@@ -36,6 +36,9 @@ public class Team implements Serializable{
 	}
 	
 	public int countStat(String game_id,String count_what,int quart){
+		if(quart==0) {
+			return countStat(game_id, count_what);
+		}
 		QuarterEnum quarter = getQuarterEnumVal(quart);
 		TeamTypeEnum type = getTeamTypeEnumVal(count_what);
 		return stats.get(game_id).countStats(type,quarter);
@@ -52,6 +55,27 @@ public class Team implements Serializable{
 	
 	public double countAvgStat(int jersey,String count_what,int quart) {
 		return players.get(jersey).countAvgStat(count_what, quart);
+	}
+	
+	public double countAvgTStat(String count_what,int quart) {
+		if(quart == 0) {
+			this.countAvgTStat(count_what);
+		}
+		double count = 0;
+		for (String key : stats.keySet()) {
+			count += this.countStat(key,count_what,quart);			
+		}
+		
+		return count;
+	}
+	
+	public double countAvgTStat(String count_what) {
+		double count = 0;
+		for (String key : stats.keySet()) {
+			count += this.countStat(key,count_what);			
+		}
+		
+		return count;
 	}
 	
 	
