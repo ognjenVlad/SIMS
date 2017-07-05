@@ -13,11 +13,15 @@ public class GameOutputView extends JDialog implements ActionListener{
 	JButton backButton;
 	
 	View view;
+	String game_id;
 	String team1;
 	String team2;
 	
-	GameOutputView(View v,String team1,String team2){
+	GameOutputView(View v,String game_id,String team1,String team2){
 		super(v, "Game view");
+		this.game_id = game_id;
+		this.team1 = team1;
+		this.team2 = team2;
 		view = v;
 		
 		tabbedPaneInit();
@@ -36,8 +40,8 @@ public class GameOutputView extends JDialog implements ActionListener{
 	private void tabbedPaneInit() {
 		tabbedPane = new JTabbedPane();
 		
-		tabbedPane.add("Team1", new TeamOutputTab(view,team1,0));
-		tabbedPane.add("Team2", new TeamOutputTab(view,team2,0));
+		tabbedPane.add(team1, new GameTeamOutputTab(view,game_id,team1,0));
+		tabbedPane.add(team2, new GameTeamOutputTab(view,game_id,team2,0));
 		tabbedPane.setVisible(true);
 	}
 	

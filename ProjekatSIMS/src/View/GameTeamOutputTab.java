@@ -1,8 +1,6 @@
 package View;
 
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JLabel;
@@ -12,7 +10,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
-public class TeamOutputTab extends JPanel implements ActionListener{
+public class GameTeamOutputTab extends JPanel{
 	
 	JTable teamTable;
 	SquaresTable fieldsTable;
@@ -20,10 +18,12 @@ public class TeamOutputTab extends JPanel implements ActionListener{
 	ArrayList<JLabel> labels;
 	View view;
 	String team;
+	String game_id;
 	int quarter;
 	DefaultTableModel model;
 	
-	TeamOutputTab(View v ,String team,int quarter){
+	GameTeamOutputTab(View v ,String game_id,String team,int quarter){
+		this.game_id = game_id;
 		this.view = v;
 		this.team = team;
 		this.quarter = quarter;
@@ -118,7 +118,6 @@ public class TeamOutputTab extends JPanel implements ActionListener{
 
 	}
 	
-	
 	private void fillWithData() {
 		double twoPoints_square1;
 		double twoPoints_hit_square1;
@@ -186,50 +185,49 @@ public class TeamOutputTab extends JPanel implements ActionListener{
 
 			current3Pts = total3Pts[0] + total3Pts[1] + total3Pts[2] + total3Pts[3] + total3Pts[4];
 			current3Ptshits = hit3Pts[0] + hit3Pts[1] + hit3Pts[2] + hit3Pts[3] + hit3Pts[4];
-
-			twoPoints_square1 = view.getControler().countAvgShots(team, Integer.parseInt(players.get(i).split(",")[0]), 2, false, 1, quarter);
-			twoPoints_hit_square1 = view.getControler().countAvgShots(team, Integer.parseInt(players.get(i).split(",")[0]), 2, true, 1, quarter);
+			twoPoints_square1 = view.getControler().countShots(game_id,team, Integer.parseInt(players.get(i).split(",")[0]), 2, false, 1, quarter);
+			twoPoints_hit_square1 = view.getControler().countShots(game_id,team, Integer.parseInt(players.get(i).split(",")[0]), 2, true, 1, quarter);
 			totalFGs[0] += twoPoints_square1 + twoPoints_hit_square1;
 			hitFGs[0] += twoPoints_hit_square1;
-			twoPoints_square2 = view.getControler().countAvgShots(team, Integer.parseInt(players.get(i).split(",")[0]), 2, false, 2, quarter);
-			twoPoints_hit_square2 = view.getControler().countAvgShots(team, Integer.parseInt(players.get(i).split(",")[0]), 2, true, 2, quarter);
+			twoPoints_square2 = view.getControler().countShots(game_id,team, Integer.parseInt(players.get(i).split(",")[0]), 2, false, 2, quarter);
+			twoPoints_hit_square2 = view.getControler().countShots(game_id,team, Integer.parseInt(players.get(i).split(",")[0]), 2, true, 2, quarter);
 			totalFGs[1] += twoPoints_square2 + twoPoints_hit_square2;
 			hitFGs[1] += twoPoints_hit_square2;
-			twoPoints_square3 = view.getControler().countAvgShots(team, Integer.parseInt(players.get(i).split(",")[0]), 2, false, 3, quarter);
-			twoPoints_hit_square3 = view.getControler().countAvgShots(team, Integer.parseInt(players.get(i).split(",")[0]), 2, true, 3, quarter);
+			twoPoints_square3 = view.getControler().countShots(game_id,team, Integer.parseInt(players.get(i).split(",")[0]), 2, false, 3, quarter);
+			twoPoints_hit_square3 = view.getControler().countShots(game_id,team, Integer.parseInt(players.get(i).split(",")[0]), 2, true, 3, quarter);
 			totalFGs[2] += twoPoints_square3 + twoPoints_hit_square3;
 			hitFGs[2] += twoPoints_hit_square3;
-			twoPoints_square4 = view.getControler().countAvgShots(team, Integer.parseInt(players.get(i).split(",")[0]), 2, false, 4, quarter);
-			twoPoints_hit_square4 = view.getControler().countAvgShots(team, Integer.parseInt(players.get(i).split(",")[0]), 2, true, 4, quarter);
+			twoPoints_square4 = view.getControler().countShots(game_id,team, Integer.parseInt(players.get(i).split(",")[0]), 2, false, 4, quarter);
+			twoPoints_hit_square4 = view.getControler().countShots(game_id,team, Integer.parseInt(players.get(i).split(",")[0]), 2, true, 4, quarter);
 			totalFGs[2] += twoPoints_square4 + twoPoints_hit_square4;
 			hitFGs[2] += twoPoints_hit_square4;
-			twoPoints_square5 = view.getControler().countAvgShots(team, Integer.parseInt(players.get(i).split(",")[0]), 2, false, 5, quarter);
-			twoPoints_hit_square5 = view.getControler().countAvgShots(team, Integer.parseInt(players.get(i).split(",")[0]), 2, true, 5, quarter);
+			twoPoints_square5 = view.getControler().countShots(game_id,team, Integer.parseInt(players.get(i).split(",")[0]), 2, false, 5, quarter);
+			twoPoints_hit_square5 = view.getControler().countShots(game_id,team, Integer.parseInt(players.get(i).split(",")[0]), 2, true, 5, quarter);
 			totalFGs[2] += twoPoints_square5 + twoPoints_hit_square5;
 			hitFGs[2] += twoPoints_hit_square5;
-			twoPoints_square6 = view.getControler().countAvgShots(team, Integer.parseInt(players.get(i).split(",")[0]), 2, false, 6, quarter);
-			twoPoints_hit_square6 = view.getControler().countAvgShots(team, Integer.parseInt(players.get(i).split(",")[0]), 2, true, 6, quarter);
+			twoPoints_square6 = view.getControler().countShots(game_id,team, Integer.parseInt(players.get(i).split(",")[0]), 2, false, 6, quarter);
+			twoPoints_hit_square6 = view.getControler().countShots(game_id,team, Integer.parseInt(players.get(i).split(",")[0]), 2, true, 6, quarter);
 			totalFGs[2] += twoPoints_square6 + twoPoints_hit_square6;
 			hitFGs[2] += twoPoints_hit_square6;
 			
-			treePoints_square1 =  view.getControler().countAvgShots(team, Integer.parseInt(players.get(i).split(",")[0]), 3, false, 1, quarter);
-			treePoints_hit_square1 = view.getControler().countAvgShots(team, Integer.parseInt(players.get(i).split(",")[0]), 3, false, 1, quarter);
+			treePoints_square1 =  view.getControler().countShots(game_id,team, Integer.parseInt(players.get(i).split(",")[0]), 3, false, 1, quarter);
+			treePoints_hit_square1 = view.getControler().countShots(game_id,team, Integer.parseInt(players.get(i).split(",")[0]), 3, false, 1, quarter);
 			total3Pts[0] += treePoints_square1 + treePoints_hit_square1;
 			hit3Pts[0] += treePoints_hit_square1;
-			treePoints_square2 =  view.getControler().countAvgShots(team, Integer.parseInt(players.get(i).split(",")[0]), 3, false, 2, quarter);
-			treePoints_hit_square2 = view.getControler().countAvgShots(team, Integer.parseInt(players.get(i).split(",")[0]), 3, false, 2, quarter);
+			treePoints_square2 =  view.getControler().countShots(game_id,team, Integer.parseInt(players.get(i).split(",")[0]), 3, false, 2, quarter);
+			treePoints_hit_square2 = view.getControler().countShots(game_id,team, Integer.parseInt(players.get(i).split(",")[0]), 3, false, 2, quarter);
 			total3Pts[1] += treePoints_square2 + treePoints_hit_square2;
 			hit3Pts[1] += treePoints_hit_square2;
-			treePoints_square3 =  view.getControler().countAvgShots(team, Integer.parseInt(players.get(i).split(",")[0]), 3, false, 3, quarter);
-			treePoints_hit_square3 = view.getControler().countAvgShots(team, Integer.parseInt(players.get(i).split(",")[0]), 3, false, 3, quarter);
+			treePoints_square3 =  view.getControler().countShots(game_id,team, Integer.parseInt(players.get(i).split(",")[0]), 3, false, 3, quarter);
+			treePoints_hit_square3 = view.getControler().countShots(game_id,team, Integer.parseInt(players.get(i).split(",")[0]), 3, false, 3, quarter);
 			total3Pts[2] += treePoints_square3 + treePoints_hit_square3;
 			hit3Pts[2] += treePoints_hit_square3;
-			treePoints_square4 =  view.getControler().countAvgShots(team, Integer.parseInt(players.get(i).split(",")[0]), 3, false, 4, quarter);
-			treePoints_hit_square4 = view.getControler().countAvgShots(team, Integer.parseInt(players.get(i).split(",")[0]), 3, false, 4, quarter);
+			treePoints_square4 =  view.getControler().countShots(game_id,team, Integer.parseInt(players.get(i).split(",")[0]), 3, false, 4, quarter);
+			treePoints_hit_square4 = view.getControler().countShots(game_id,team, Integer.parseInt(players.get(i).split(",")[0]), 3, false, 4, quarter);
 			total3Pts[3] += treePoints_square3 + treePoints_hit_square3;
 			hit3Pts[3] += treePoints_hit_square4;
-			treePoints_square5 =  view.getControler().countAvgShots(team, Integer.parseInt(players.get(i).split(",")[0]), 3, false, 5, quarter);
-			treePoints_hit_square5 = view.getControler().countAvgShots(team, Integer.parseInt(players.get(i).split(",")[0]), 3, false, 5, quarter);
+			treePoints_square5 =  view.getControler().countShots(game_id,team, Integer.parseInt(players.get(i).split(",")[0]), 3, false, 5, quarter);
+			treePoints_hit_square5 = view.getControler().countShots(game_id,team, Integer.parseInt(players.get(i).split(",")[0]), 3, false, 5, quarter);
 			total3Pts[4] += treePoints_square4 + treePoints_hit_square4;
 			hit3Pts[4] += treePoints_hit_square4;
 
@@ -247,23 +245,23 @@ public class TeamOutputTab extends JPanel implements ActionListener{
 						
 			model.setValueAt("0", i+1, 3); // ft
 
-			o_rebounds = view.getControler().countAvgStat(team, Integer.parseInt(players.get(i).split(",")[0]), "off_rebounds", quarter);
+			o_rebounds = view.getControler().countStats(game_id,team, Integer.parseInt(players.get(i).split(",")[0]), "off_rebounds", quarter);
 
 			model.setValueAt(o_rebounds+"", i+1, 4); // O.Reb
 			
-			d_rebounds = view.getControler().countAvgStat(team, Integer.parseInt(players.get(i).split(",")[0]), "def_rebounds", quarter);
+			d_rebounds = view.getControler().countStats(game_id,team, Integer.parseInt(players.get(i).split(",")[0]), "def_rebounds", quarter);
 
 			model.setValueAt(o_rebounds + "", i+1, 5); // D.Reb
 
-			assists = view.getControler().countAvgStat(team, Integer.parseInt(players.get(i).split(",")[0]), "assist", quarter);
+			assists = view.getControler().countStats(game_id,team, Integer.parseInt(players.get(i).split(",")[0]), "assist", quarter);
 
 			model.setValueAt(assists + "", i+1, 6); // Asists
 
 			turnovers = 0;
-			turnovers += view.getControler().countAvgStat(team, Integer.parseInt(players.get(i).split(",")[0]), "back_court", quarter);
-			turnovers += view.getControler().countAvgStat(team, Integer.parseInt(players.get(i).split(",")[0]), "tree_sec", quarter);
-			turnovers += view.getControler().countAvgStat(team, Integer.parseInt(players.get(i).split(",")[0]), "travel", quarter);
-			turnovers += view.getControler().countAvgStat(team, Integer.parseInt(players.get(i).split(",")[0]), "bad_pass", quarter);
+			turnovers += view.getControler().countStats(game_id,team, Integer.parseInt(players.get(i).split(",")[0]), "back_court", quarter);
+			turnovers += view.getControler().countStats(game_id,team, Integer.parseInt(players.get(i).split(",")[0]), "tree_sec", quarter);
+			turnovers += view.getControler().countStats(game_id,team, Integer.parseInt(players.get(i).split(",")[0]), "travel", quarter);
+			turnovers += view.getControler().countStats(game_id,team, Integer.parseInt(players.get(i).split(",")[0]), "bad_pass", quarter);
 
 			model.setValueAt(turnovers + "", i+1, 7); // Turnovers
 			
@@ -297,20 +295,14 @@ public class TeamOutputTab extends JPanel implements ActionListener{
 		fieldsTable.changeCell(0, 1, Double.toString(hitFGs[4])+"-"+Double.toString(totalFGs[4]));
 		fieldsTable.changeCell(0, 2, Double.toString(hitFGs[5])+"-"+Double.toString(totalFGs[5]));
 		
-		labels.get(5).setText(view.getControler().countAvgTStat(team, "eight_seconds", quarter)+"");
-		labels.get(7).setText(view.getControler().countAvgTStat(team, "five_seconds", quarter)+"");
-		labels.get(1).setText(view.getControler().countAvgTStat(team, "timeout", quarter)+"");
-		labels.get(9).setText(view.getControler().countAvgTStat(team, "trainer_technical", quarter)+"");
-		labels.get(3).setText(view.getControler().countAvgTStat(team, "twotree_seconds", quarter)+"");
+		labels.get(5).setText(view.getControler().countTStat(game_id,team, "eight_seconds", quarter)+"");
+		labels.get(7).setText(view.getControler().countTStat(game_id,team, "five_seconds", quarter)+"");
+		labels.get(1).setText(view.getControler().countTStat(game_id,team, "timeout", quarter)+"");
+		labels.get(9).setText(view.getControler().countTStat(game_id,team, "trainer_technical", quarter)+"");
+		labels.get(3).setText(view.getControler().countTStat(game_id,team, "twotree_seconds", quarter)+"");
 		
 		this.repaint();
-	}
 
-	
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
+import Model.TeamStat.TeamTypeEnum;
+
 public class BasketballModel implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -107,6 +109,18 @@ public class BasketballModel implements Serializable {
 	
 	public double countAvgTStat(String team,String count_what,int quart) {
 		return teams.get(team).countAvgTStat(count_what, quart);
+	}
+	
+	public int countTStat(String game_id,String team,String count_what,int quart){
+		return teams.get(team).countStat(game_id,count_what,quart);
+	}
+	
+	public int countShots(String game_id,String team,int jersey,int shot_for,boolean isGood,int pos,int quart){
+		return teams.get(team).getPlayer(jersey).countShots(game_id,shot_for,isGood,pos,quart);
+	}
+
+	public int countStats(String game_id,String team,int jersey,String count_what,int quart){
+		return teams.get(team).getPlayer(jersey).countStat(game_id, count_what,quart);
 	}
 
 	

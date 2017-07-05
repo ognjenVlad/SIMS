@@ -54,7 +54,7 @@ public class GameDialog extends JDialog implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String game = this.gamesCb.getSelectedItem().toString();
-		gameView = new GameOutputView(view,game.split(" ")[2],game.split(" ")[4]);
+		gameView = new GameOutputView(view,game.split(" ")[0],game.split(" ")[2],game.split(" ")[4]);
 		gameView.setVisible(true);
 		this.dispose();
 

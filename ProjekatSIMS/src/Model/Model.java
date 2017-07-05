@@ -80,6 +80,18 @@ public class Model {
 		return basketModel.countAvgTStat(team,count_what, quart);
 	}
 
+	public int countTStat(String game_id,String team,String count_what,int quart){
+		return basketModel.countTStat(game_id,team,count_what,quart);
+	}
+	
+	public int countShots(String game_id,String team,int jersey,int shot_for,boolean isGood,int pos,int quart){
+		return basketModel.countShots(game_id, team, jersey, shot_for, isGood, pos, quart);
+	}
+
+	public int countStats(String game_id,String team,int jersey,String count_what,int quart){
+		return basketModel.countStats(game_id, team, jersey, count_what, quart);
+	}
+
 	
 
 
