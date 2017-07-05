@@ -118,4 +118,9 @@ public class Controler {
 	public double countAvgStat(String team, int jersey, String count_what, int quart) {
 		return model.countAvgStat(team, jersey, count_what, quart);
 	}
+	
+	public double countAvgTStat(String team,String count_what,int quart) {
+		return model.countAvgTStat(team,count_what, quart);
+	}
+
 }

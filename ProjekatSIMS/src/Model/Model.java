@@ -76,6 +76,11 @@ public class Model {
 		return basketModel.countAvgStat(team,jersey,count_what, quart);
 	}
 
+	public double countAvgTStat(String team,String count_what,int quart) {
+		return basketModel.countAvgTStat(team,count_what, quart);
+	}
+
+	
 
 
 }
