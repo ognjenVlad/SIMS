@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
 
 public class PlayerInputView extends JDialog implements ActionListener	{
@@ -53,10 +54,16 @@ public class PlayerInputView extends JDialog implements ActionListener	{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		for (int i = 0; i < quarters.size(); i++){
+			if (!quarters.get(0).checkInputs()) {
+				JOptionPane.showMessageDialog(this, "Inputs must be numbers!");
+				return;
+			}
+		}
 		for(int i = 0 ; i < quarters.size(); i++) {
 			quarters.get(0).saveData();
 		}
-		
+		this.dispose();
 	}
 
 }

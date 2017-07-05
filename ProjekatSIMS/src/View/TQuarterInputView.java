@@ -75,6 +75,23 @@ public class TQuarterInputView extends JPanel implements ActionListener{
 		jp.add(textFields.get(4));
 
 	}
+	public boolean isInt(String param) {
+
+		if (param.matches("^\\d+$")) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	public boolean checkInputs(){
+		for(JTextField jt : textFields){
+			if(!isInt(jt.getText())){
+				
+				return false;
+			}
+		}
+		return true;
+	}
 	
 	public void saveData() {
 		int total;

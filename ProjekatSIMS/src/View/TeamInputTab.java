@@ -1,6 +1,6 @@
 package View;
 
-import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,6 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class TeamInputTab extends JPanel implements ActionListener{
+	
+	private static final long serialVersionUID = 1L;
 	ArrayList<JButton> playerButtons;
 	ArrayList<JLabel> labels;
 	ArrayList<PlayerInputView> pInputViews;
@@ -35,20 +37,21 @@ public class TeamInputTab extends JPanel implements ActionListener{
 		playerButtons = new ArrayList<JButton>();
 		labels = new ArrayList<JLabel>();
 		teamStatsButton = new JButton("Add team stats");
-		jp = new JPanel(new GridLayout(13,2));
+		jp = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
 		this.setSize(500,500);
-	
+		teamStatsButton.addActionListener(this);
+		this.jp.add(teamStatsButton);
 		init();
 		
-		teamStatsButton.addActionListener(this);
-		this.add(teamStatsButton);
+		
+		
 
 	}
 	
 	private void init() {
 		ArrayList<String> players = view.getControler().getPlayersSorter(team);
-		
+		JPanel jpPlayers = new JPanel(new GridLayout(12,2));
 		for(int i =0 ; i < 12 ; i++) {
 			playerButtons.add(new JButton("+"));
 			playerButtons.get(i).addActionListener(this);
@@ -62,13 +65,15 @@ public class TeamInputTab extends JPanel implements ActionListener{
 			labels.add(new JLabel("Player"));			
 		}
 		
-		this.add(jp);
+		
 		
 		for(int i = 0 ; i < 12 ; i++) {
-			jp.add(labels.get(i));
-			jp.add(playerButtons.get(i));
+			jpPlayers.add(labels.get(i));
+			jpPlayers.add(playerButtons.get(i));
 		}
+		this.jp.add(jpPlayers);
 		
+		this.add(jp);
 		
 		
 		this.setVisible(true);

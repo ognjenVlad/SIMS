@@ -7,6 +7,7 @@ import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -44,6 +45,13 @@ public class TeamWindow extends JDialog implements ActionListener {
 		this.setLocationRelativeTo(v);
 		this.setVisible(true);
 	}
+	public boolean filled() {
+		if (this.teamName.getText().equals("")) {
+			return false;
+		} else {
+			return true;
+		}
+	}
 	/*
 	 * Poziva metodu kontrolera koji se nalazi u View
 	 * i dodaje tim u fajl, kasnije treba popuniti igrace tima i statistiku
@@ -51,7 +59,14 @@ public class TeamWindow extends JDialog implements ActionListener {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent event){
-		
+		if(!filled()){
+			JOptionPane.showMessageDialog(this, "Team name input is empty!");
+			return;
+		}
+		if(this.window.getControler().ifTeamExists(this.teamName.getText())){
+			JOptionPane.showMessageDialog(this, "Team name already exists!");
+			return;
+		}
 		this.window.getControler().processAddTeam(this.teamName.getText());
 		this.dispose();
 		

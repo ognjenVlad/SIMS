@@ -39,6 +39,36 @@ public class Game implements Serializable {
 		
 		return null;
 	}
+
+
+	public String getGame_id() {
+		return game_id;
+	}
+
+
+	public void setGame_id(String game_id) {
+		this.game_id = game_id;
+	}
+
+
+	public Date getDate() {
+		return date;
+	}
+
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+
+	public String getPlace() {
+		return place;
+	}
+
+
+	public void setPlace(String place) {
+		this.place = place;
+	}
 	
 	
 	

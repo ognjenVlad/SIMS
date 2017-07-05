@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -149,8 +150,25 @@ public class QuarterInputView extends JPanel implements ActionListener {
 		this.add(jp);
 		this.setVisible(true);
 	}
-	
+	public boolean isInt(String param) {
+
+		if (param.matches("^\\d+$")) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	public boolean checkInputs(){
+		for(JTextField jt : textFields){
+			if(!isInt(jt.getText())){
+				
+				return false;
+			}
+		}
+		return true;
+	}
 	public void saveData() {
+		
 		int total,miss;
 		total = Integer.parseInt(textFields.get(0).getText());
 		miss = Integer.parseInt(textFields.get(1).getText());

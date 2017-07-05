@@ -75,24 +75,80 @@ public class Controler {
 		}
 		return teams;
 	}
+	/**
+	 * Timovi sa 12 igraca, manje od toga ne mogu da igraju utakmicu
+	 * @return
+	 */
+	public ArrayList<String> validTeams(){
+		ArrayList<String> teams = new ArrayList<String>();
+		for (Team t : this.model.getBasketModel().getTeams().values()) {
+			if(t.getTeam().size() >= 12){
+				teams.add(t.getName());
+			}	
+		}
+		return teams;
+	}
+	/**
+	 * Igrac moze da se doda samo u tim koji ima manje od 12 igraca
+	 * @return
+	 */
+	public ArrayList<String> notFullTeams(){
+		ArrayList<String> teams = new ArrayList<String>();
+		for (Team t : this.model.getBasketModel().getTeams().values()) {
+			if(t.getTeam().size() < 12){
+				teams.add(t.getName());
+			}	
+		}
+		return teams;
+	}
 
 	public ArrayList<String> getPlayers(String team) {
 
 		ArrayList<String> players = new ArrayList<String>();
 		Team t = this.model.getBasketModel().getTeams().get(team);
-		for (Player p : t.getTeam().values() ) {
-			players.add(p.getDress_num()+ " " +p.getName()+ " "+ p.getSurname());
+		for (Player p : t.getTeam().values()) {
+			players.add(p.getDress_num() + " " + p.getName() + " " + p.getSurname());
 		}
 		return players;
 	}
-	public ArrayList<String> getGames(){
+
+	public ArrayList<String> getGames() {
 		ArrayList<String> games = new ArrayList<String>();
-		
+
 		for (Game g : this.model.getBasketModel().getGames().values()) {
 			games.add(g.toString());
 		}
 		return games;
 	}
+
+	public boolean ifTeamExists(String teamName) {
+
+		for (Team t : this.model.getBasketModel().getTeams().values()) {
+			if (t.getName().toUpperCase().equals(teamName.toUpperCase())) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean ifJersyExists(String jersyNum, String teamName) {
+		Team t = this.model.getBasketModel().getTeams().get(teamName);
+		for (Player p : t.getTeam().values()) {
+			if(p.getDress_num() == Integer.valueOf(jersyNum)){
+				return true;
+			}
+		}
+		return false;
+	}
+	public boolean ifGameIdExists(String id) {
+		for (Game g : this.model.getBasketModel().getGames().values()){
+			if(g.getGame_id().equals(id)){
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public ArrayList<String> getPlayersSorter(String team) {
 		return model.getPlayersSorter(team);
 	}
@@ -118,21 +174,21 @@ public class Controler {
 	public double countAvgStat(String team, int jersey, String count_what, int quart) {
 		return model.countAvgStat(team, jersey, count_what, quart);
 	}
-	
-	public double countAvgTStat(String team,String count_what,int quart) {
-		return model.countAvgTStat(team,count_what, quart);
+
+	public double countAvgTStat(String team, String count_what, int quart) {
+		return model.countAvgTStat(team, count_what, quart);
 	}
-	
-	public int countTStat(String game_id,String team,String count_what,int quart){
-		return model.countTStat(game_id,team,count_what,quart);
+
+	public int countTStat(String game_id, String team, String count_what, int quart) {
+		return model.countTStat(game_id, team, count_what, quart);
 	}
-	
-	public int countShots(String game_id,String team,int jersey,int shot_for,boolean isGood,int pos,int quart){
+
+	public int countShots(String game_id, String team, int jersey, int shot_for, boolean isGood, int pos, int quart) {
 		return model.countShots(game_id, team, jersey, shot_for, isGood, pos, quart);
 	}
 
-	public int countStats(String game_id,String team,int jersey,String count_what,int quart){
+	public int countStats(String game_id, String team, int jersey, String count_what, int quart) {
 		return model.countStats(game_id, team, jersey, count_what, quart);
 	}
-	
+
 }
