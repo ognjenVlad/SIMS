@@ -70,13 +70,13 @@ public class PlayerWindow extends JDialog implements ActionListener{
 		
 		this.add(jp);
 	}
-	
-	void createComboBox(){
+	public void createComboBox(){
 		this.teamsCb = new JComboBox<String>();
-		for(String s: v.getControler().getTeamNames()){
+		for(String s: this.v.getControler().getTeamNames()){
 			this.teamsCb.addItem(s);
 		}
 	}
+	
 	@Override
 	public void actionPerformed(ActionEvent event){
 		

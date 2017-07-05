@@ -27,8 +27,7 @@ public class Game implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Game [homeTeam=" + homeTeam + ", awayTeam=" + awayTeam + ", game_id=" + game_id + ", date=" + date
-				+ ", place=" + place + "]";
+		return game_id + " : " + homeTeam + " vs " + awayTeam;
 	}
 	
 	public Team getTeam(String team_name){

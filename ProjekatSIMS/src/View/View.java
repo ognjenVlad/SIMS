@@ -32,30 +32,33 @@ public final class  View extends JFrame implements ActionListener{
 	private PlayerWindow pw;
 	private GameWindow gw;
 	private Controler controler;
-	private TeamOutputView teamView;
-	private PlayerOutputView playerView;
-	private GameOutputView gameView;
+	private TeamDialog teamDialog;
+	private PlayerDialog playerDialog;
+	private GameDialog gameDialog;
 	
 	public View(){
 		super("Basketball statistics");
 		
 		
 		
+		this.statsPlayerButton = new JButton("Stats for player");
+		this.statsTButton = new JButton("Stats for team");
+		this.statsGameButton = new JButton("Stats for game");
+		this.addGame = new JButton("Add game");
 		this.addTeamButton = new JButton("Add team");
 		this.addPlayer = new JButton("Add player");
-		this.statsTButton = new JButton("Stats for team");
-		this.addGame = new JButton("Add game");
-		this.statsPlayerButton = new JButton("Stats for player");
-		this.statsGameButton = new JButton("Stats for game");
+		
 		
 		JPanel jp = new JPanel(new GridLayout(6, 1));
 		
-		jp.add(this.addTeamButton); 
-		jp.add(this.addPlayer);
-		jp.add(this.statsTButton);
-		jp.add(this.addGame);
 		jp.add(this.statsPlayerButton);
 		jp.add(this.statsGameButton);
+		jp.add(this.statsTButton);
+		jp.add(this.addTeamButton); 
+		jp.add(this.addPlayer);
+		jp.add(this.addGame);
+		
+		
 		this.addTeamButton.addActionListener(this);
         this.addPlayer.addActionListener(this);
         this.statsTButton.addActionListener(this);
@@ -90,18 +93,19 @@ public final class  View extends JFrame implements ActionListener{
 		
 		}else if(src == this.statsTButton){
 				
-			teamView = new TeamOutputView(this,"Real Madrid");
-			teamView.setVisible(true);
+			this.teamDialog = new TeamDialog(this);
+			this.teamDialog.setVisible(true);
 			
 		}else if(src == this.addGame){
 			gw = new GameWindow(this);
 			gw.setVisible(true);
+			
 		}else if(src == this.statsPlayerButton){
-			playerView = new PlayerOutputView(this,"Real Madrid",4);
-			playerView.setVisible(true);;
+			this.playerDialog = new PlayerDialog(this);
+			this.playerDialog.setVisible(true);
 		}else if(src == this.statsGameButton){
-			gameView = new GameOutputView(this,"Real Madrid","Read Madrid");
-			gameView.setVisible(true);
+			this.gameDialog = new GameDialog(this);
+			this.gameDialog.setVisible(true);
 		}		
 	}
 	
