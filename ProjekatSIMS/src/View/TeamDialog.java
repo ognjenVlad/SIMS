@@ -55,6 +55,7 @@ public class TeamDialog extends JDialog implements ActionListener {
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
 		teamView = new TeamOutputView(view,teamsCb.getSelectedItem().toString());
 		teamView.setVisible(true);
 		this.dispose();
