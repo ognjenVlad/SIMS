@@ -116,7 +116,7 @@ public class QuarterInputView extends JPanel implements ActionListener {
 		jp.add(labels.get(25));
 		jp.add(textFields.get(25));
 
-		labels.add(new JLabel("Tree seconds:"));
+		labels.add(new JLabel("3 seconds:"));
 		textFields.add(new JTextField());
 
 		jp.add(labels.get(26));
@@ -209,7 +209,7 @@ public class QuarterInputView extends JPanel implements ActionListener {
 		view.getControler().processAddStat(game_id, team, jersey, "bad_pass", total, quarter);
 
 		total = Integer.parseInt(textFields.get(26).getText());
-		view.getControler().processAddStat(game_id, team, jersey, "tree_sec", total, quarter);
+		view.getControler().processAddStat(game_id, team, jersey, "three_sec", total, quarter);
 
 		total = Integer.parseInt(textFields.get(27).getText());
 		view.getControler().processAddStat(game_id, team, jersey, "back_court", total, quarter);

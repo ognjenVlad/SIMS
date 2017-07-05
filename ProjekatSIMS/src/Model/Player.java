@@ -206,7 +206,7 @@ public class Player implements Serializable {
 			return TypeEnum.FOUL;
 		else if(str.equals("technical_foul"))
 			return TypeEnum.TECHNICAL_FOUL;
-		else if(str.equals("tree_sec"))
+		else if(str.equals("three_sec"))
 			return TypeEnum.TREE_SEC;
 		else if(str.equals("travel"))
 			return TypeEnum.TRAVEL;

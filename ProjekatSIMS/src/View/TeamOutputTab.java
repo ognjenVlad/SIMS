@@ -33,7 +33,13 @@ public class TeamOutputTab extends JPanel implements ActionListener{
 	
 	private void init() {
 		jp = new JPanel(new GridLayout(5,2));
-		fieldsTable = new SquaresTable();
+		fieldsTable = new SquaresTable(){
+			 public boolean isCellEditable(int data, int columns)
+             {
+                 return false;
+             }
+		};
+		
 		labels = new ArrayList<JLabel>();
 		teamTableInit();
 		fieldsTableInit();

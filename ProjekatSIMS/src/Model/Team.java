@@ -100,7 +100,7 @@ public class Team implements Serializable{
 			return TeamTypeEnum.TIMEOUT;
 		else if(str.equals("trainer_technical"))
 			return TeamTypeEnum.TRAINER_TECHICAL;
-		else if(str.equals("twotree_seconds"))
+		else if(str.equals("twothree_seconds"))
 			return TeamTypeEnum.TWOFOUR_SECONDS;
 		return TeamTypeEnum.NONE;
 	}

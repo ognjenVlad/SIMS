@@ -83,7 +83,7 @@ public class TQuarterInputView extends JPanel implements ActionListener{
 		view.getControler().processAddTStat(game_id,team,"timeout",total,quarter);
 
 		total = Integer.parseInt(textFields.get(1).getText());
-		view.getControler().processAddTStat(game_id,team,"twotree_seconds",total,quarter);
+		view.getControler().processAddTStat(game_id,team,"twothree_seconds",total,quarter);
 		
 		total = Integer.parseInt(textFields.get(2).getText());
 		view.getControler().processAddTStat(game_id,team,"eight_seconds",total,quarter);
