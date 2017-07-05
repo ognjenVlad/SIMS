@@ -33,13 +33,14 @@ public class TeamOutputTab extends JPanel implements ActionListener{
 	
 	private void init() {
 		jp = new JPanel(new GridLayout(5,2));
-		teamTableInit();
-		fieldsTableInit();
 		fieldsTable = new SquaresTable();
 		labels = new ArrayList<JLabel>();
+		teamTableInit();
+		fieldsTableInit();
 		
 		initJP();
 		
+		fillWithData();
 		this.add(teamTable);
 		this.add(fieldsTable);
 		this.add(jp);
@@ -74,7 +75,6 @@ public class TeamOutputTab extends JPanel implements ActionListener{
 			tcm.getColumn(i).setCellRenderer(centerRenderer);
 		}
 		
-		fillWithData();
 
 	}
 	
