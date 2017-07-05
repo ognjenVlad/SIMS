@@ -17,6 +17,7 @@ public class TeamOutputView extends JDialog implements ActionListener{
 	String team;
 	
 	TeamOutputView(View v,String team){
+		super(v, "Team view");
 		view = v;
 		this.team = team;
 		

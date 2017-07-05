@@ -17,6 +17,7 @@ public class GameOutputView extends JDialog implements ActionListener{
 	String team2;
 	
 	GameOutputView(View v,String team1,String team2){
+		super(v, "Game view");
 		view = v;
 		
 		tabbedPaneInit();

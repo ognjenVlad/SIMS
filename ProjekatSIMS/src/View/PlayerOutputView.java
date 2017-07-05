@@ -14,7 +14,9 @@ public class PlayerOutputView extends JDialog implements ActionListener{
 	JTabbedPane tabbedPane;
 	
 	PlayerOutputView(View v,String team,int jersey){
+		super(v, "Player view");
 		view = v;
+		
 		this.team = team;
 		this.jersey = jersey;
 		
