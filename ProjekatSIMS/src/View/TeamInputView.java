@@ -53,6 +53,7 @@ public class TeamInputView extends JDialog implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		dispose();
+		view.getControler().updateFile();
 	}
 
 }

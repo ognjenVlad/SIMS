@@ -19,7 +19,7 @@ public class Model {
 	public void updateFile() {
 
 		try {
-			os = new ObjectOutputStream(new FileOutputStream("./resources/teams.app"));
+			os = new ObjectOutputStream(new FileOutputStream("./resources/teams2.app"));
 			os.writeObject(basketModel);
 			os.close();
 		} catch (IOException e) {
@@ -30,7 +30,7 @@ public class Model {
 	public void readFile(){
 		
 		try {
-			is = new ObjectInputStream(new FileInputStream("./resources/teams.app"));
+			is = new ObjectInputStream(new FileInputStream("./resources/teams2.app"));
 			basketModel =  (BasketballModel) is.readObject();
 			is.close();
 		} catch (ClassNotFoundException e) {
@@ -69,15 +69,21 @@ public class Model {
 	}
 	
 	public double countAvgShots(String team,int jersey,int shot_for,boolean isGood,int pos,int quart) {
-		return  basketModel.countAvgShots(team,jersey,shot_for, isGood, pos,quart);
+		Double num = basketModel.countAvgShots(team,jersey,shot_for, isGood, pos,quart);
+		num = (double) Math.round(num*100)/100;
+		return num.doubleValue();
 	}
 	
 	public double countAvgStat(String team,int jersey,String count_what,int quart) {
-		return basketModel.countAvgStat(team,jersey,count_what, quart);
+		Double num =  basketModel.countAvgStat(team,jersey,count_what, quart);
+		num = (double) Math.round(num*100)/100;
+		return num.doubleValue();
 	}
 
 	public double countAvgTStat(String team,String count_what,int quart) {
-		return basketModel.countAvgTStat(team,count_what, quart);
+		Double num = basketModel.countAvgTStat(team,count_what, quart);
+		num =  (double) (Math.round(num*100)/100);
+		return num.doubleValue();
 	}
 
 	public int countTStat(String game_id,String team,String count_what,int quart){

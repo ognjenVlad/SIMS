@@ -241,6 +241,7 @@ public class GameTeamOutputTab extends JPanel{
 			model.setValueAt(players.get(i), i+1, 0);
 			
 			model.setValueAt(currentPlayerFGhit + "-" + currretPlayerFG, i+1, 1); // 2 pt
+
 			model.setValueAt(currretPlayer3Pts + "-" + currentPlayer3Ptshit, i+1, 2); // 3 pt
 						
 			model.setValueAt("0", i+1, 3); // ft

@@ -66,6 +66,10 @@ public class Controler {
 	public void setModel(Model model) {
 		this.model = model;
 	}
+	
+	public void updateFile(){
+		this.model.updateFile();
+	}
 
 	public ArrayList<String> getTeamNames() {
 

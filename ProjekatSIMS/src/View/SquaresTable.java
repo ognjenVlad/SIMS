@@ -41,10 +41,17 @@ public class SquaresTable extends JTable{
 	
 	public void changeCell(int row , int cell,String total){
 		// total = "number-number"
-		Double number = Double.parseDouble(total.split("-")[1]) / Double.parseDouble(total.split("-")[0]);
-		number = number * 100;
-		int num2 = number.intValue();
-		model.setValueAt("<html>"+ total +"<br/>"+ num2 +"%</html>", row, cell);
+		Double num1 = Double.parseDouble(total.split("-")[0]);
+		Double num2 = Double.parseDouble(total.split("-")[1]);
+		int intNum;
+		if(num1 == 0){
+			intNum = 0;
+		}{
+			Double number = num1/num2;
+			number = number * 100;
+			intNum = number.intValue();
+		}
+		model.setValueAt("<html>"+ total +"<br/>"+ intNum +"%</html>", row, cell);
 	}
 
 }
