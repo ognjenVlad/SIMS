@@ -36,7 +36,7 @@ public class PlayerInputView extends JDialog implements ActionListener	{
 		saveButton.addActionListener(this);
 		this.add(tabbedPane);
 		for(int i = 0 ; i < 4 ; i++){
-			quarters.add(new QuarterInputView(view,game_id,team,jersey,i));
+			quarters.add(new QuarterInputView(view,game_id,team,jersey,i+1));
 			tabbedPane.add("Quarter "+ (i+1) , quarters.get(i));
 		}
 		this.add(saveButton,BorderLayout.SOUTH);
@@ -61,7 +61,7 @@ public class PlayerInputView extends JDialog implements ActionListener	{
 			}
 		}
 		for(int i = 0 ; i < quarters.size(); i++) {
-			quarters.get(0).saveData();
+			quarters.get(i).saveData();
 		}
 		this.dispose();
 	}

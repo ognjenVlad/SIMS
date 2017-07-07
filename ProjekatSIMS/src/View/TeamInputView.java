@@ -29,6 +29,7 @@ public class TeamInputView extends JDialog implements ActionListener{
 		
 		this.tabbedPane = new JTabbedPane();
 		this.saveButton = new JButton("Save");
+		this.saveButton.addActionListener(this);
 		this.setSize(500,500);
 		this.setLocationRelativeTo(v);
 		this.setModal(true);

@@ -24,6 +24,7 @@ public class QuarterInputView extends JPanel implements ActionListener {
 	JPanel jp = new JPanel(new GridLayout(16, 4));
 
 	QuarterInputView(View v,String game_id,String team,String jersey,int quarter) {
+		System.out.println(game_id + " - " + team + " - " + jersey + " - " + quarter);
 		this.view = v;
 		this.game_id = game_id;
 		this.jersey = Integer.parseInt(jersey);
@@ -172,14 +173,18 @@ public class QuarterInputView extends JPanel implements ActionListener {
 		int total,miss;
 		total = Integer.parseInt(textFields.get(0).getText());
 		miss = Integer.parseInt(textFields.get(1).getText());
+		
+		System.out.println("Hit - Total , 2 pts square 1 :" + miss + "-" + total);
 		view.getControler().processAddPoints(game_id, team, jersey, 2, total , miss, 1 , quarter);
 
 		total = Integer.parseInt(textFields.get(2).getText());
 		miss = Integer.parseInt(textFields.get(3).getText());
+		System.out.println("Hit - Total , 2 pts square 2 :" + miss + "-" + total);
 		view.getControler().processAddPoints(game_id, team, jersey, 2, total , miss, 2 , quarter);
 
 		total = Integer.parseInt(textFields.get(4).getText());
 		miss = Integer.parseInt(textFields.get(5).getText());
+		System.out.println("Hit - Total , 2 pts square 3 :" + miss + "-" + total);
 		view.getControler().processAddPoints(game_id, team, jersey, 2, total , miss, 3 , quarter);
 
 		total = Integer.parseInt(textFields.get(6).getText());
@@ -204,15 +209,15 @@ public class QuarterInputView extends JPanel implements ActionListener {
 
 		total = Integer.parseInt(textFields.get(16).getText());
 		miss = Integer.parseInt(textFields.get(17).getText());
-		view.getControler().processAddPoints(game_id, team, jersey, 2, total , miss, 3 , quarter);
+		view.getControler().processAddPoints(game_id, team, jersey, 3, total , miss, 3 , quarter);
 
 		total = Integer.parseInt(textFields.get(18).getText());
 		miss = Integer.parseInt(textFields.get(19).getText());
-		view.getControler().processAddPoints(game_id, team, jersey, 2, total , miss, 4 , quarter);
+		view.getControler().processAddPoints(game_id, team, jersey, 3, total , miss, 4 , quarter);
 
 		total = Integer.parseInt(textFields.get(20).getText());
 		miss = Integer.parseInt(textFields.get(21).getText());
-		view.getControler().processAddPoints(game_id, team, jersey, 2, total , miss, 6 , quarter);
+		view.getControler().processAddPoints(game_id, team, jersey, 3, total , miss, 6 , quarter);
 
 		total = Integer.parseInt(textFields.get(22).getText());
 		view.getControler().processAddStat(game_id, team, jersey, "def_rebound", total, quarter);

@@ -201,16 +201,16 @@ public class TeamOutputTab extends JPanel implements ActionListener{
 			hitFGs[2] += twoPoints_hit_square3;
 			twoPoints_square4 = view.getControler().countAvgShots(team, Integer.parseInt(players.get(i).split(",")[0]), 2, false, 4, quarter);
 			twoPoints_hit_square4 = view.getControler().countAvgShots(team, Integer.parseInt(players.get(i).split(",")[0]), 2, true, 4, quarter);
-			totalFGs[2] += twoPoints_square4 + twoPoints_hit_square4;
-			hitFGs[2] += twoPoints_hit_square4;
+			totalFGs[3] += twoPoints_square4 + twoPoints_hit_square4;
+			hitFGs[3] += twoPoints_hit_square4;
 			twoPoints_square5 = view.getControler().countAvgShots(team, Integer.parseInt(players.get(i).split(",")[0]), 2, false, 5, quarter);
 			twoPoints_hit_square5 = view.getControler().countAvgShots(team, Integer.parseInt(players.get(i).split(",")[0]), 2, true, 5, quarter);
-			totalFGs[2] += twoPoints_square5 + twoPoints_hit_square5;
-			hitFGs[2] += twoPoints_hit_square5;
+			totalFGs[4] += twoPoints_square5 + twoPoints_hit_square5;
+			hitFGs[4] += twoPoints_hit_square5;
 			twoPoints_square6 = view.getControler().countAvgShots(team, Integer.parseInt(players.get(i).split(",")[0]), 2, false, 6, quarter);
 			twoPoints_hit_square6 = view.getControler().countAvgShots(team, Integer.parseInt(players.get(i).split(",")[0]), 2, true, 6, quarter);
-			totalFGs[2] += twoPoints_square6 + twoPoints_hit_square6;
-			hitFGs[2] += twoPoints_hit_square6;
+			totalFGs[4] += twoPoints_square6 + twoPoints_hit_square6;
+			hitFGs[4] += twoPoints_hit_square6;
 			
 			treePoints_square1 =  view.getControler().countAvgShots(team, Integer.parseInt(players.get(i).split(",")[0]), 3, false, 1, quarter);
 			treePoints_hit_square1 = view.getControler().countAvgShots(team, Integer.parseInt(players.get(i).split(",")[0]), 3, false, 1, quarter);

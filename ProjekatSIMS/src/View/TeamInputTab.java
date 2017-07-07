@@ -44,8 +44,6 @@ public class TeamInputTab extends JPanel implements ActionListener{
 		this.jp.add(teamStatsButton);
 		init();
 		
-		
-		
 
 	}
 	

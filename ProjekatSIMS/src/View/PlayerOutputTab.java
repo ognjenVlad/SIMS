@@ -139,27 +139,39 @@ public class PlayerOutputTab extends JPanel implements ActionListener{
 		totalFGs[0] = view.getControler().countAvgShots(team, jersey, 2, false, 1, quarter);
 		hitFGs[0] = view.getControler().countAvgShots(team, jersey, 2, true, 1, quarter);
 		totalFGs[0] += hitFGs[0];
+		
+		System.out.println(view.getControler().countAvgShots(team, jersey, 2, false, 1, quarter));
 
 		totalFGs[1] = view.getControler().countAvgShots(team, jersey, 2, false, 2, quarter);
 		hitFGs[1] = view.getControler().countAvgShots(team, jersey, 2, true, 2, quarter);
 		totalFGs[1] += hitFGs[1];
 
+		System.out.println(view.getControler().countAvgShots(team, jersey, 2, false, 2, quarter));
+
 		totalFGs[2] = view.getControler().countAvgShots(team, jersey, 2, false, 3, quarter);
 		hitFGs[2] = view.getControler().countAvgShots(team, jersey, 2, true, 3, quarter);
 		totalFGs[2] += hitFGs[2];
 
-		totalFGs[2] = view.getControler().countAvgShots(team, jersey, 2, false, 4, quarter);
-		hitFGs[2] = view.getControler().countAvgShots(team, jersey, 2, true, 4, quarter);
-		totalFGs[2] += hitFGs[2];
+		System.out.println(view.getControler().countAvgShots(team, jersey, 2, false, 3, quarter));
 
-		totalFGs[2] = view.getControler().countAvgShots(team, jersey, 2, false, 5, quarter);
-		hitFGs[2] = view.getControler().countAvgShots(team, jersey, 2, true, 5, quarter);
-		totalFGs[2] += hitFGs[2];
+		totalFGs[3] = view.getControler().countAvgShots(team, jersey, 2, false, 4, quarter);
+		hitFGs[3] = view.getControler().countAvgShots(team, jersey, 2, true, 4, quarter);
+		totalFGs[3] += hitFGs[3];
 
-		totalFGs[2] = view.getControler().countAvgShots(team, jersey, 2, false, 6, quarter);
-		hitFGs[2] = view.getControler().countAvgShots(team, jersey, 2, true, 6, quarter);
-		totalFGs[2] += hitFGs[2];
+		System.out.println(view.getControler().countAvgShots(team, jersey, 2, false, 4, quarter));
 
+		totalFGs[4] = view.getControler().countAvgShots(team, jersey, 2, false, 5, quarter);
+		hitFGs[4] = view.getControler().countAvgShots(team, jersey, 2, true, 5, quarter);
+		totalFGs[4] += hitFGs[4];
+
+		System.out.println(view.getControler().countAvgShots(team, jersey, 2, false, 5, quarter));
+
+		totalFGs[5] = view.getControler().countAvgShots(team, jersey, 2, false, 6, quarter);
+		hitFGs[5] = view.getControler().countAvgShots(team, jersey, 2, true, 6, quarter);
+		totalFGs[5] += hitFGs[5];
+
+		System.out.println(view.getControler().countAvgShots(team, jersey, 2, true, 6, quarter));
+		
 		total3Pts[0] =  view.getControler().countAvgShots(team, jersey, 3, false, 1, quarter);
 		hit3Pts[0] = view.getControler().countAvgShots(team, jersey, 3, false, 1, quarter);
 		total3Pts[0] += hit3Pts[0];
@@ -181,8 +193,11 @@ public class PlayerOutputTab extends JPanel implements ActionListener{
 		total3Pts[4] += hit3Pts[4];
 
 		
-
+		System.out.println("Quarter : " + quarter);
 		
+		for(int i = 0 ; i < 6 ; i++){
+			System.out.println("Square " + (i+1) + ", FG : " + hitFGs[i] + " - " + totalFGs[i]);
+		}
 		
 		two_points.changeCell(1, 0, Double.toString(hitFGs[0])+"-"+Double.toString(totalFGs[0]));
 		two_points.changeCell(1, 1, Double.toString(hitFGs[1])+"-"+Double.toString(totalFGs[1]));
@@ -192,10 +207,10 @@ public class PlayerOutputTab extends JPanel implements ActionListener{
 		two_points.changeCell(0, 2, Double.toString(hitFGs[5])+"-"+Double.toString(totalFGs[5]));
 
 		three_points.changeCell(1, 0, Double.toString(hit3Pts[0])+"-"+Double.toString(total3Pts[0]));
-		three_points.changeCell(1, 1, Double.toString(hitFGs[1])+"-"+Double.toString(total3Pts[1]));
-		three_points.changeCell(1, 2, Double.toString(hitFGs[2])+"-"+Double.toString(total3Pts[2]));
-		three_points.changeCell(0, 0, Double.toString(hitFGs[3])+"-"+Double.toString(total3Pts[3]));
-		three_points.changeCell(0, 2, Double.toString(hitFGs[4])+"-"+Double.toString(total3Pts[4]));
+		three_points.changeCell(1, 1, Double.toString(hit3Pts[1])+"-"+Double.toString(total3Pts[1]));
+		three_points.changeCell(1, 2, Double.toString(hit3Pts[2])+"-"+Double.toString(total3Pts[2]));
+		three_points.changeCell(0, 0, Double.toString(hit3Pts[3])+"-"+Double.toString(total3Pts[3]));
+		three_points.changeCell(0, 2, Double.toString(hit3Pts[4])+"-"+Double.toString(total3Pts[4]));
 		
 		labels.get(3).setText(view.getControler().countAvgStat(team, jersey , "off_rebounds", quarter)+"");
 		labels.get(1).setText(view.getControler().countAvgStat(team, jersey , "def_rebounds", quarter)+"");

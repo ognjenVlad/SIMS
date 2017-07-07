@@ -40,20 +40,11 @@ public class PointsCounter implements Serializable{
 				continue;
 			}
 			
-			switch(position){
-            case ONE : counter++ ;
-                     break;
-            case TWO : counter++;
-            		break;
-            case TREE : counter++;
-            		break;
-            case FOUR : counter++;
-            		break;
-            case FIVE : counter++;
-            		break;
-            case SIX :	counter++;
-            		break;
+			if(position != fga.getPosition()){
+				continue;
 			}
+			
+			counter++;
 		}
 		return counter;
 	}
@@ -74,20 +65,11 @@ public class PointsCounter implements Serializable{
 				continue;
 			}
 			
-			switch(position){
-            case ONE : counter++ ;
-                     break;
-            case TWO : counter++;
-            		break;
-            case TREE : counter++;
-            		break;
-            case FOUR : counter++;
-            		break;
-            case FIVE : counter++;
-            		break;
-            case SIX :	counter++;
-            		break;
+			if(position != fga.getPosition()){
+				continue;
 			}
+			
+			counter++;
 		}
 		return counter;
 	}
