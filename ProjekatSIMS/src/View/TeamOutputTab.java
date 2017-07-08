@@ -293,6 +293,8 @@ public class TeamOutputTab extends JPanel implements ActionListener{
 			index = points + (0.4 * currentPlayerFGhit) - (0.7 * currentPlayerFG) - (0.4 * (ft_total - ft_in)) 
 					+ (0.7 * o_rebounds) + (0.3 * d_rebounds) + steals + (0.7 * assists) + (0.7 * blocks) - (0.4 * fouls) - turnovers;
 			
+			index = Math.round(index*10d)/10d;
+			
 			model.setValueAt(index + "", i+1, 11); // Index
 			
 			

@@ -2,6 +2,7 @@ package View;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.math.BigDecimal;
 
 import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
@@ -20,7 +21,7 @@ public class SquaresTable extends JTable{
 	
 	this.setRowHeight(0,80);
 	this.setRowHeight(1,80);
-	this.setFont(new Font("Serif", Font.BOLD, 20));
+	this.setFont(new Font("Serif", Font.BOLD, 16));
 	this.setBackground(Color.LIGHT_GRAY);
 
 	
@@ -42,7 +43,14 @@ public class SquaresTable extends JTable{
 	public void changeCell(int row , int cell,String total){
 		// total = "number-number"
 		Double num1 = Double.parseDouble(total.split("-")[0]);
+		num1 = Math.round(num1*10d)/10d;
+		BigDecimal bd = new BigDecimal(num1.toString());
+		bd = bd.setScale(1, BigDecimal.ROUND_HALF_UP);
 		Double num2 = Double.parseDouble(total.split("-")[1]);
+		num2 = Math.round(num2*10d)/10d;
+		BigDecimal bd2 = new BigDecimal(num2.toString());
+		bd2 = bd2.setScale(1, BigDecimal.ROUND_HALF_UP);
+		
 		int intNum;
 		if(num1 == 0){
 			intNum = 0;
@@ -51,7 +59,7 @@ public class SquaresTable extends JTable{
 			number = number * 100;
 			intNum = number.intValue();
 		}
-		model.setValueAt("<html>"+ total +"<br/>"+ intNum +"%</html>", row, cell);
+		model.setValueAt("<html>"+ bd +"-"+ bd2 +"<br/>"+ intNum +"%</html>", row, cell);
 	}
 
 }

@@ -29,7 +29,7 @@ public class TeamOutputView extends JDialog implements ActionListener{
 		this.add(backButton,BorderLayout.SOUTH);
 		
 		this.setModal(true);
-		this.setSize(800, 470);
+		this.setSize(1100, 470);
 		this.setLocationRelativeTo(view);
 
 	}

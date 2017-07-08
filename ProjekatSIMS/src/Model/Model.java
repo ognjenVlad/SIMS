@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public class Model {
@@ -70,20 +71,24 @@ public class Model {
 	
 	public double countAvgShots(String team,int jersey,int shot_for,boolean isGood,int pos,int quart) {
 		Double num = basketModel.countAvgShots(team,jersey,shot_for, isGood, pos,quart);
-		num = (double) Math.round(num*100)/100;
+		num = (double) Math.round(num*10d)/10d;
 		return num.doubleValue();
 	}
 	
 	public double countAvgStat(String team,int jersey,String count_what,int quart) {
 		Double num =  basketModel.countAvgStat(team,jersey,count_what, quart);
-		num = (double) Math.round(num*100)/100;
-		return num.doubleValue();
+		num = (double) Math.round(num*10d)/10d;
+		BigDecimal bd = new BigDecimal(num.toString());
+		bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
+		return bd.doubleValue();
 	}
 
 	public double countAvgTStat(String team,String count_what,int quart) {
 		Double num = basketModel.countAvgTStat(team,count_what, quart);
-		num =  (double) (Math.round(num*100)/100);
-		return num.doubleValue();
+		num =  (double) (Math.round(num*10d)/10d);
+		BigDecimal bd = new BigDecimal(num.toString());
+		bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
+		return bd.doubleValue();
 	}
 
 	public int countTStat(String game_id,String team,String count_what,int quart){
