@@ -212,6 +212,10 @@ public class Player implements Serializable {
 			return TypeEnum.TRAVEL;
 		else if(str.equals("bad_pass"))
 			return TypeEnum.BAD_PASS;
+		else if(str.equals("steal"))
+			return TypeEnum.STEAL;
+		else if(str.equals("block"))
+			return TypeEnum.BLOCK;
 		return TypeEnum.NONE;
 	}
 

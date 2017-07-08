@@ -13,7 +13,7 @@ import javax.swing.SwingConstants;
 public class PlayerOutputTab extends JPanel implements ActionListener{
 	JPanel finalJP = new JPanel(new GridLayout(2,1));
 	JPanel jp = new JPanel(new GridLayout(1,2));
-	JPanel jp2 = new JPanel(new GridLayout(10,2));
+	JPanel jp2 = new JPanel(new GridLayout(13,2));
 	SquaresTable two_points;
 	SquaresTable three_points;
 	ArrayList<JLabel> labels;
@@ -59,52 +59,66 @@ public class PlayerOutputTab extends JPanel implements ActionListener{
 	
 	
 	private void init(){
-		labels.add(new JLabel("Defensive rebonds:"));
+		labels.add(new JLabel("Free throws:"));
 		jp2.add(labels.get(0));
 		labels.add(new JLabel("0",SwingConstants.CENTER));
 		jp2.add(labels.get(1));
 
-		labels.add(new JLabel("Offensive rebounds:"));
+		labels.add(new JLabel("Defensive rebonds:"));
 		jp2.add(labels.get(2));
 		labels.add(new JLabel("0",SwingConstants.CENTER));
 		jp2.add(labels.get(3));
-		
-		labels.add(new JLabel("Travels:"));
+
+		labels.add(new JLabel("Offensive rebounds:"));
 		jp2.add(labels.get(4));
 		labels.add(new JLabel("0",SwingConstants.CENTER));
 		jp2.add(labels.get(5));
 		
-		labels.add(new JLabel("Bad passes:"));
+		labels.add(new JLabel("Travels:"));
 		jp2.add(labels.get(6));
 		labels.add(new JLabel("0",SwingConstants.CENTER));
 		jp2.add(labels.get(7));
 		
-		labels.add(new JLabel("3 seconds:"));
+		labels.add(new JLabel("Bad passes:"));
 		jp2.add(labels.get(8));
 		labels.add(new JLabel("0",SwingConstants.CENTER));
 		jp2.add(labels.get(9));
 		
-		labels.add(new JLabel("Back courts:"));
+		labels.add(new JLabel("3 seconds:"));
 		jp2.add(labels.get(10));
 		labels.add(new JLabel("0",SwingConstants.CENTER));
 		jp2.add(labels.get(11));
 		
-		labels.add(new JLabel("Fouls:"));
+		labels.add(new JLabel("Back courts:"));
 		jp2.add(labels.get(12));
 		labels.add(new JLabel("0",SwingConstants.CENTER));
 		jp2.add(labels.get(13));
-
-		labels.add(new JLabel("Technical fouls:"));
+		
+		labels.add(new JLabel("Fouls:"));
 		jp2.add(labels.get(14));
 		labels.add(new JLabel("0",SwingConstants.CENTER));
 		jp2.add(labels.get(15));
-		
-		labels.add(new JLabel("Assists:"));
+
+		labels.add(new JLabel("Technical fouls:"));
 		jp2.add(labels.get(16));
 		labels.add(new JLabel("0",SwingConstants.CENTER));
 		jp2.add(labels.get(17));
+		
+		labels.add(new JLabel("Assists:"));
+		jp2.add(labels.get(18));
+		labels.add(new JLabel("0",SwingConstants.CENTER));
+		jp2.add(labels.get(19));
 
-	}
+		labels.add(new JLabel("Blocks:"));
+		jp2.add(labels.get(20));
+		labels.add(new JLabel("0",SwingConstants.CENTER));
+		jp2.add(labels.get(21));
+
+		labels.add(new JLabel("Steals:"));
+		jp2.add(labels.get(22));
+		labels.add(new JLabel("0",SwingConstants.CENTER));
+		jp2.add(labels.get(23));
+}
 	
 	private void fillData(){
 		
@@ -125,53 +139,34 @@ public class PlayerOutputTab extends JPanel implements ActionListener{
 		
 		
 		
-		double d_rebounds;
-		double o_rebounds;
-		double assists;
-		double turnovers;
-		double index;
-		double points;
-		double back_court;
-		double three_sec;
-		double bad_pass;
-		double travel;
+		double ft_total;
+		double ft_miss;
 
 		totalFGs[0] = view.getControler().countAvgShots(team, jersey, 2, false, 1, quarter);
 		hitFGs[0] = view.getControler().countAvgShots(team, jersey, 2, true, 1, quarter);
 		totalFGs[0] += hitFGs[0];
 		
-		System.out.println(view.getControler().countAvgShots(team, jersey, 2, false, 1, quarter));
-
 		totalFGs[1] = view.getControler().countAvgShots(team, jersey, 2, false, 2, quarter);
 		hitFGs[1] = view.getControler().countAvgShots(team, jersey, 2, true, 2, quarter);
 		totalFGs[1] += hitFGs[1];
 
-		System.out.println(view.getControler().countAvgShots(team, jersey, 2, false, 2, quarter));
 
 		totalFGs[2] = view.getControler().countAvgShots(team, jersey, 2, false, 3, quarter);
 		hitFGs[2] = view.getControler().countAvgShots(team, jersey, 2, true, 3, quarter);
 		totalFGs[2] += hitFGs[2];
 
-		System.out.println(view.getControler().countAvgShots(team, jersey, 2, false, 3, quarter));
-
 		totalFGs[3] = view.getControler().countAvgShots(team, jersey, 2, false, 4, quarter);
 		hitFGs[3] = view.getControler().countAvgShots(team, jersey, 2, true, 4, quarter);
 		totalFGs[3] += hitFGs[3];
-
-		System.out.println(view.getControler().countAvgShots(team, jersey, 2, false, 4, quarter));
 
 		totalFGs[4] = view.getControler().countAvgShots(team, jersey, 2, false, 5, quarter);
 		hitFGs[4] = view.getControler().countAvgShots(team, jersey, 2, true, 5, quarter);
 		totalFGs[4] += hitFGs[4];
 
-		System.out.println(view.getControler().countAvgShots(team, jersey, 2, false, 5, quarter));
-
 		totalFGs[5] = view.getControler().countAvgShots(team, jersey, 2, false, 6, quarter);
 		hitFGs[5] = view.getControler().countAvgShots(team, jersey, 2, true, 6, quarter);
 		totalFGs[5] += hitFGs[5];
 
-		System.out.println(view.getControler().countAvgShots(team, jersey, 2, true, 6, quarter));
-		
 		total3Pts[0] =  view.getControler().countAvgShots(team, jersey, 3, false, 1, quarter);
 		hit3Pts[0] = view.getControler().countAvgShots(team, jersey, 3, false, 1, quarter);
 		total3Pts[0] += hit3Pts[0];
@@ -193,12 +188,6 @@ public class PlayerOutputTab extends JPanel implements ActionListener{
 		total3Pts[4] += hit3Pts[4];
 
 		
-		System.out.println("Quarter : " + quarter);
-		
-		for(int i = 0 ; i < 6 ; i++){
-			System.out.println("Square " + (i+1) + ", FG : " + hitFGs[i] + " - " + totalFGs[i]);
-		}
-		
 		two_points.changeCell(1, 0, Double.toString(hitFGs[0])+"-"+Double.toString(totalFGs[0]));
 		two_points.changeCell(1, 1, Double.toString(hitFGs[1])+"-"+Double.toString(totalFGs[1]));
 		two_points.changeCell(1, 2, Double.toString(hitFGs[2])+"-"+Double.toString(totalFGs[2]));
@@ -212,15 +201,24 @@ public class PlayerOutputTab extends JPanel implements ActionListener{
 		three_points.changeCell(0, 0, Double.toString(hit3Pts[3])+"-"+Double.toString(total3Pts[3]));
 		three_points.changeCell(0, 2, Double.toString(hit3Pts[4])+"-"+Double.toString(total3Pts[4]));
 		
-		labels.get(3).setText(view.getControler().countAvgStat(team, jersey , "off_rebounds", quarter)+"");
-		labels.get(1).setText(view.getControler().countAvgStat(team, jersey , "def_rebounds", quarter)+"");
-		labels.get(17).setText(view.getControler().countAvgStat(team, jersey, "assist", quarter)+"");
-		labels.get(15).setText(view.getControler().countAvgStat(team, jersey, "back_court", quarter)+"");
-		labels.get(9).setText(view.getControler().countAvgStat(team, jersey, "three_sec", quarter)+"");
-		labels.get(5).setText(view.getControler().countAvgStat(team, jersey, "travel", quarter)+"");
-		labels.get(7).setText(view.getControler().countAvgStat(team, jersey, "bad_pass", quarter)+"");
-		labels.get(11).setText(view.getControler().countAvgStat(team, jersey, "foul", quarter)+"");
-		labels.get(13).setText(view.getControler().countAvgStat(team, jersey, "technical_foul", quarter)+"");
+		
+		ft_total = view.getControler().countAvgShots(team, jersey , 1 , true, 1, quarter);
+		ft_miss = view.getControler().countAvgShots(team, jersey , 1 , false, 1, quarter);
+		
+		ft_total += ft_miss;
+		
+		labels.get(1).setText(ft_miss+"-"+ft_total);
+		labels.get(3).setText(view.getControler().countAvgStat(team, jersey , "def_rebounds", quarter)+"");
+		labels.get(5).setText(view.getControler().countAvgStat(team, jersey , "off_rebounds", quarter)+"");
+		labels.get(7).setText(view.getControler().countAvgStat(team, jersey, "travel", quarter)+"");
+		labels.get(9).setText(view.getControler().countAvgStat(team, jersey, "bad_pass", quarter)+"");
+		labels.get(11).setText(view.getControler().countAvgStat(team, jersey, "three_sec", quarter)+"");
+		labels.get(13).setText(view.getControler().countAvgStat(team, jersey, "foul", quarter)+"");
+		labels.get(15).setText(view.getControler().countAvgStat(team, jersey, "technical_foul", quarter)+"");
+		labels.get(17).setText(view.getControler().countAvgStat(team, jersey, "back_court", quarter)+"");
+		labels.get(19).setText(view.getControler().countAvgStat(team, jersey, "assist", quarter)+"");
+		labels.get(21).setText(view.getControler().countAvgStat(team, jersey, "block", quarter)+"");
+		labels.get(23).setText(view.getControler().countAvgStat(team, jersey, "steal", quarter)+"");
 
 	}
 	

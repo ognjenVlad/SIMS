@@ -53,7 +53,7 @@ public class TeamOutputTab extends JPanel implements ActionListener{
 	}
 	
 	private void teamTableInit() {
-		teamTable = new JTable(13,10) {
+		teamTable = new JTable(13,13) {
 			 public boolean isCellEditable(int data, int columns)
              {
                  return false;
@@ -69,8 +69,11 @@ public class TeamOutputTab extends JPanel implements ActionListener{
 		model.setValueAt("D. Reb", 0, 5);
 		model.setValueAt("Assists", 0, 6);
 		model.setValueAt("Turnovers", 0, 7);
-		model.setValueAt("+/-", 0, 8);
-		model.setValueAt("Points", 0, 9);
+		model.setValueAt("Fouls", 0, 8);
+		model.setValueAt("Blocks", 0, 9);
+		model.setValueAt("Steals", 0, 10);
+		model.setValueAt("+/-", 0, 11);
+		model.setValueAt("Points", 0, 12);
 		
 		TableColumnModel tcm = teamTable.getColumnModel();
 		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
@@ -166,18 +169,23 @@ public class TeamOutputTab extends JPanel implements ActionListener{
 		double currentFGhits;
 		double current3Ptshits;
 		
-		double currretPlayerFG;
+		double currentPlayerFG;
 		double currentPlayerFGhit;
-		double currretPlayer3Pts;
+		double currentPlayer3Pts;
 		double currentPlayer3Ptshit;
 		
 		
+		double ft_in;
+		double fouls;
+		double ft_total;
 		double d_rebounds;
 		double o_rebounds;
 		double assists;
 		double turnovers;
 		double index;
 		double points;
+		double blocks;
+		double steals;
 		
 		ArrayList<String> players = view.getControler().getPlayersSorter(team);
 		for(int i = 0 ; i < players.size(); i++) {
@@ -234,18 +242,22 @@ public class TeamOutputTab extends JPanel implements ActionListener{
 			hit3Pts[4] += treePoints_hit_square4;
 
 			
-			currretPlayerFG = totalFGs[0] + totalFGs[1] + totalFGs[2] + totalFGs[3] + totalFGs[4] + totalFGs[5] - currentFG;
+			currentPlayerFG = totalFGs[0] + totalFGs[1] + totalFGs[2] + totalFGs[3] + totalFGs[4] + totalFGs[5] - currentFG;
 			currentPlayerFGhit = hitFGs[0] + hitFGs[1] + hitFGs[2] + hitFGs[3] + hitFGs[4] + hitFGs[5] - currentFGhits;
 			
-			currretPlayer3Pts = total3Pts[0] + total3Pts[1] + total3Pts[2] + total3Pts[3] + total3Pts[4] - current3Pts;
+			currentPlayer3Pts = total3Pts[0] + total3Pts[1] + total3Pts[2] + total3Pts[3] + total3Pts[4] - current3Pts;
 			currentPlayer3Ptshit = hit3Pts[0] + hit3Pts[1] + hit3Pts[2] + hit3Pts[3] + hit3Pts[4] - current3Ptshits;
 			
 			model.setValueAt(players.get(i), i+1, 0);
 			
-			model.setValueAt(currentPlayerFGhit + "-" + currretPlayerFG, i+1, 1); // 2 pt
-			model.setValueAt(currretPlayer3Pts + "-" + currentPlayer3Ptshit, i+1, 2); // 3 pt
+			model.setValueAt(currentPlayerFGhit + "-" + currentPlayerFG, i+1, 1); // 2 pt
+			model.setValueAt(currentPlayer3Pts + "-" + currentPlayer3Ptshit, i+1, 2); // 3 pt
 						
-			model.setValueAt("0", i+1, 3); // ft
+			ft_in = view.getControler().countAvgShots(team, Integer.parseInt(players.get(i).split(",")[0]), 1, true, 1, quarter);
+			ft_total = view.getControler().countAvgShots(team, Integer.parseInt(players.get(i).split(",")[0]), 1, false, 1, quarter);
+			ft_total += ft_in;
+			
+			model.setValueAt(ft_in+"-"+ft_total, i+1, 3); // ft
 
 			o_rebounds = view.getControler().countAvgStat(team, Integer.parseInt(players.get(i).split(",")[0]), "off_rebounds", quarter);
 
@@ -253,7 +265,7 @@ public class TeamOutputTab extends JPanel implements ActionListener{
 			
 			d_rebounds = view.getControler().countAvgStat(team, Integer.parseInt(players.get(i).split(",")[0]), "def_rebounds", quarter);
 
-			model.setValueAt(o_rebounds + "", i+1, 5); // D.Reb
+			model.setValueAt(d_rebounds + "", i+1, 5); // D.Reb
 
 			assists = view.getControler().countAvgStat(team, Integer.parseInt(players.get(i).split(",")[0]), "assist", quarter);
 
@@ -266,15 +278,25 @@ public class TeamOutputTab extends JPanel implements ActionListener{
 			turnovers += view.getControler().countAvgStat(team, Integer.parseInt(players.get(i).split(",")[0]), "bad_pass", quarter);
 
 			model.setValueAt(turnovers + "", i+1, 7); // Turnovers
+
+			fouls = view.getControler().countAvgStat(team, Integer.parseInt(players.get(i).split(",")[0]), "foul", quarter);
+			model.setValueAt(fouls + "", i+1, 8); // Fouls
+
+
+			blocks = view.getControler().countAvgStat(team, Integer.parseInt(players.get(i).split(",")[0]), "block", quarter);
+			model.setValueAt(blocks + "", i+1, 9); // blocks
+
+			steals = view.getControler().countAvgStat(team, Integer.parseInt(players.get(i).split(",")[0]), "steal", quarter);
+			model.setValueAt(steals + "", i+1, 10); // steals
 			
-			index = 0;
+			points = currentPlayerFGhit * 2 + currentPlayer3Pts * 3;
+			index = points + (0.4 * currentPlayerFGhit) - (0.7 * currentPlayerFG) - (0.4 * (ft_total - ft_in)) 
+					+ (0.7 * o_rebounds) + (0.3 * d_rebounds) + steals + (0.7 * assists) + (0.7 * blocks) - (0.4 * fouls) - turnovers;
 			
-			model.setValueAt(index + "", i+1, 8); // Index
+			model.setValueAt(index + "", i+1, 11); // Index
 			
-			points = currentPlayerFGhit * 2 + currretPlayer3Pts * 3;
 			
-			model.setValueAt(points + "", i+1, 9);// Points
-			
+			model.setValueAt(points + "", i+1, 12);// Points
 			
 		}
 		

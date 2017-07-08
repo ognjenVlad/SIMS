@@ -8,8 +8,6 @@ public class test {
 		View v = new View();
 		Controler c = new Controler(v);
 		
-
-
 		/*		
 		c.processAddTeam("team1");
 		c.processAddTeam("team2");
