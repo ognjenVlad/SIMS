@@ -1,7 +1,6 @@
 package View;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Controler.Controler;
@@ -48,7 +48,6 @@ public final class  View extends JFrame implements ActionListener{
 		this.addTeamButton = new JButton("Add team");
 		this.addPlayer = new JButton("Add player");
 		
-		
 		JPanel jp = new JPanel(new GridLayout(6, 1));
 		
 		jp.add(this.statsPlayerButton);
@@ -66,13 +65,14 @@ public final class  View extends JFrame implements ActionListener{
         this.statsPlayerButton.addActionListener(this);
         this.statsGameButton.addActionListener(this);
         
-		this.add(jp, BorderLayout.SOUTH);
-		this.setSize(800, 600);
+		this.add(jp, BorderLayout.EAST);
+		
 		ImageIcon img = new ImageIcon("./resources/fibahands.jpeg");
 		
 		
-		
-		this.getContentPane().setBackground(Color.DARK_GRAY);
+		JLabel picture = new JLabel(new ImageIcon("./resources/fiba-logo.jpeg"));
+		this.add(picture);
+		this.pack();
 		this.setIconImage(img.getImage());
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
