@@ -20,7 +20,7 @@ public class Model {
 	public void updateFile() {
 
 		try {
-			os = new ObjectOutputStream(new FileOutputStream("./resources/teams2.app"));
+			os = new ObjectOutputStream(new FileOutputStream("./resources/teams.app"));
 			os.writeObject(basketModel);
 			os.close();
 		} catch (IOException e) {
@@ -31,7 +31,7 @@ public class Model {
 	public void readFile(){
 		
 		try {
-			is = new ObjectInputStream(new FileInputStream("./resources/teams2.app"));
+			is = new ObjectInputStream(new FileInputStream("./resources/teams.app"));
 			basketModel =  (BasketballModel) is.readObject();
 			is.close();
 		} catch (ClassNotFoundException e) {
