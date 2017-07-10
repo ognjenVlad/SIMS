@@ -28,7 +28,7 @@ public class PlayerOutputView extends JDialog implements ActionListener{
 		tabbedPane.add("Quarter4", new PlayerOutputTab(v,team,jersey,4));
 
 		this.add(tabbedPane);
-		this.setSize(800,400);
+		this.pack();
 		this.setLocationRelativeTo(view);
 		tabbedPane.setVisible(true);
 		this.setModal(true);

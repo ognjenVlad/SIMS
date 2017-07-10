@@ -1,11 +1,11 @@
 package View;
 
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -26,6 +26,7 @@ public class TeamInputTab extends JPanel implements ActionListener{
 	JPanel jp;
 	TStatInputView tstatView;
 	
+	
 	TeamInputTab(View v,String game_id,String team){
 		this.game_id = game_id;
 		this.team = team;
@@ -36,12 +37,14 @@ public class TeamInputTab extends JPanel implements ActionListener{
 		tstatView = new TStatInputView(view,game_id,team);
 		playerButtons = new ArrayList<JButton>();
 		labels = new ArrayList<JLabel>();
-		teamStatsButton = new JButton("Add team stats");
-		jp = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		
+		jp = new JPanel();
 
-		this.setSize(500,500);
+		teamStatsButton = new JButton("Add team stats");
 		teamStatsButton.addActionListener(this);
-		this.jp.add(teamStatsButton);
+		
+		
+	
 		init();
 		
 
@@ -49,7 +52,7 @@ public class TeamInputTab extends JPanel implements ActionListener{
 	
 	private void init() {
 		ArrayList<String> players = view.getControler().getPlayersSorter(team);
-		JPanel jpPlayers = new JPanel(new GridLayout(12,2));
+		JPanel jpPlayers = new JPanel(new GridLayout(14,2));
 		for(int i =0 ; i < 12 ; i++) {
 			playerButtons.add(new JButton("+"));
 			playerButtons.get(i).addActionListener(this);
@@ -69,6 +72,9 @@ public class TeamInputTab extends JPanel implements ActionListener{
 			jpPlayers.add(labels.get(i));
 			jpPlayers.add(playerButtons.get(i));
 		}
+		jpPlayers.add(Box.createHorizontalStrut(2));
+		jpPlayers.add(Box.createHorizontalStrut(2));
+		jpPlayers.add(this.teamStatsButton);
 		this.jp.add(jpPlayers);
 		
 		this.add(jp);

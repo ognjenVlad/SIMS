@@ -1,19 +1,21 @@
 package View;
 
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.Box;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 public class PlayerOutputTab extends JPanel implements ActionListener{
-	JPanel finalJP = new JPanel(new GridLayout(2,1));
-	JPanel jp = new JPanel(new GridLayout(1,2));
-	JPanel jp2 = new JPanel(new GridLayout(13,2));
+	JPanel finalJP = new JPanel(new GridLayout(2, 1));
+	JPanel jp = new JPanel(new FlowLayout());
+	JPanel jp2 = new JPanel(new GridLayout(14,2));
 	SquaresTable two_points;
 	SquaresTable three_points;
 	ArrayList<JLabel> labels;
@@ -44,12 +46,16 @@ public class PlayerOutputTab extends JPanel implements ActionListener{
 		};
 		
 		jp.add(two_points);
+		jp.add(Box.createHorizontalStrut(5));
 		jp.add(three_points);
 		jp2.add(new JLabel("2 points",SwingConstants.CENTER));
 		jp2.add(new JLabel("3 points",SwingConstants.CENTER));
+		jp2.add(Box.createVerticalStrut(10));
+		jp2.add(Box.createVerticalStrut(10));
 		init();
 		
 		finalJP.add(jp,BorderLayout.NORTH);
+		
 		finalJP.add(jp2,BorderLayout.SOUTH);
 		this.add(finalJP);
 		
@@ -59,6 +65,7 @@ public class PlayerOutputTab extends JPanel implements ActionListener{
 	
 	
 	private void init(){
+		
 		labels.add(new JLabel("Free throws:"));
 		jp2.add(labels.get(0));
 		labels.add(new JLabel("0",SwingConstants.CENTER));
